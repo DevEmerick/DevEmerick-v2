@@ -35,7 +35,7 @@ function App() {
           <div className="presentation text-center lg:text-left order-2 lg:order-1 relative z-10 lg:translate-y-56">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
               Hey there, <br />
-              I'm Emerick
+              I'm Emerick <span className="text-white animate-blink ml-1 inline-block transform scale-x-75 scale-y-90"> |</span>
             </h1> 
             <p className="text-indigo-300 text-lg sm:text-xl mt-4">A passionate developer building things for the web.</p>
             <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 mt-8">
