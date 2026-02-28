@@ -85,10 +85,10 @@ function App() {
             </p>
           </div>
 
-          {/* Seta indicadora de scroll posicionada no canto inferior direito */}
+          {/* Seta indicadora de scroll centralizada no bottom */}
           <FontAwesomeIcon 
             icon={faArrowDown} 
-            className="absolute right-8 lg:right-[50px] bottom-[20px] text-indigo-300 text-2xl animate-bounce z-20" 
+            className="absolute left-1/2 -translate-x-1/2 bottom-[20px] text-indigo-300 text-2xl animate-bounce z-20" 
             aria-hidden="true" 
           />
         </main>
