@@ -67,13 +67,12 @@ function App() {
           </div>
 
           {/* Coluna 2: Avatar */}
-          <div className="avatar order-1 lg:order-2 relative z-10 flex flex-col items-center justify-center lg:translate-y-28">
+          <div className="avatar order-1 lg:order-2 relative z-10 flex flex-col items-center justify-center lg:translate-y-20">
             <img
               src="avatar.png"
               alt="Avatar de Emerick"
               className="w-full max-w-[300px] md:max-w-[400px] lg:max-w-[450px] h-auto object-contain"
             />
-            <FontAwesomeIcon icon={faArrowDown} className="text-indigo-300 text-2xl mt-8 animate-bounce" aria-hidden="true" />
           </div>
 
           {/* Coluna 3: About me */}
@@ -85,6 +84,13 @@ function App() {
               I have experience with React, Next.js, TypeScript, Sass, and CSS.
             </p>
           </div>
+
+          {/* Seta indicadora de scroll posicionada no canto inferior direito */}
+          <FontAwesomeIcon 
+            icon={faArrowDown} 
+            className="absolute right-8 lg:right-[50px] bottom-[20px] text-indigo-300 text-2xl animate-bounce z-20" 
+            aria-hidden="true" 
+          />
         </main>
       </div>
       <div className="projects"></div>
