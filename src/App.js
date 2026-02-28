@@ -1,7 +1,7 @@
 import "./App.css";
 /*import Folder from "./components/animation/folder.js";*/
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
   return (
@@ -49,7 +49,7 @@ function App() {
             className="watermark absolute top-1/2 -translate-y-1/2 -mt-[10px] left-6 right-6 sm:left-10 sm:right-10 lg:left-[100px] lg:right-[100px] h-auto pointer-events-none z-0"
           />
           {/* Coluna 1: Apresentação */}
-          <div className="presentation text-center lg:text-left order-2 lg:order-1 relative z-10 lg:translate-y-56">
+          <div className="presentation text-center lg:text-left order-2 lg:order-1 relative z-10 lg:translate-y-56 w-[calc(100%+15px)]">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
               Hey there, <br />
               I'm Emerick{" "}
@@ -58,9 +58,6 @@ function App() {
                 |
               </span>
             </h1>
-            <p className="text-indigo-300 text-lg sm:text-xl mt-4">
-              A passionate developer building things for the web.
-            </p>
             <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 mt-8">
               Projects
             </button>
@@ -77,19 +74,22 @@ function App() {
 
           {/* Coluna 3: About me */}
           <div className="order-3 relative z-10 lg:self-end lg:mb-12">
-            <p className="aboutme text-[rgb(207,207,207)] font-mono font-normal leading-[28px] text-center lg:text-left 
-            text-lg max-w-xs sm:max-w-sm lg:max-w-md mx-auto lg:mx-0">
-              My name is Guilherme Emerick, and I am a developer focused on Front-End and Full Stack development,
-              passionate about transforming ideas into real and functional applications.
-              I have experience with React, Next.js, TypeScript, Sass, and CSS.
+            <p
+              className="aboutme text-[rgb(207,207,207)] font-mono font-normal leading-[28px] text-center lg:text-left 
+            text-lg max-w-xs sm:max-w-sm lg:max-w-md mx-auto lg:mx-0"
+            >
+              I am a developer focused on Front-End and Full Stack development,
+              passionate about transforming ideas into real and functional
+              applications. I have experience with React, Next.js, TypeScript,
+              Sass, and CSS.
             </p>
           </div>
 
           {/* Seta indicadora de scroll centralizada no bottom */}
-          <FontAwesomeIcon 
-            icon={faArrowDown} 
-            className="absolute left-1/2 -translate-x-1/2 bottom-[20px] text-indigo-300 text-2xl animate-bounce z-20" 
-            aria-hidden="true" 
+          <FontAwesomeIcon
+            icon={faArrowDown}
+            className="absolute left-1/2 -translate-x-1/2 bottom-[20px] text-indigo-300 text-2xl animate-bounce z-20"
+            aria-hidden="true"
           />
         </main>
       </div>
