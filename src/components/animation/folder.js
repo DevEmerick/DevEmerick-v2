@@ -1,4 +1,4 @@
-import { useState } from 'react';
+/*import { useState } from 'react';
 
 const darkenColor = (hex, percent) => {
   let color = hex.startsWith('#') ? hex.slice(1) : hex;
@@ -155,7 +155,7 @@ const Folder = ({ color = '#5227FF', size = 1, items = [], className = '' }) => 
 
 export default Folder;
 
-/*div style={{ height: "600px", position: "relative" }}>
+div style={{ height: "600px", position: "relative" }}>
             <Folder
               size={2}
               color="#5227FF"
