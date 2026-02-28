@@ -48,7 +48,7 @@ function App() {
             className="watermark absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-auto pointer-events-none z-0"
           />
           {/* Coluna 1: Apresentação */}
-          <div className="presentation text-center lg:text-left order-2 lg:order-1 relative z-10 lg:translate-y-52">
+          <div className="presentation text-center lg:text-left order-2 lg:order-1 relative z-10 ">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
               Hey there, <br />
               I'm Emerick{" "}
