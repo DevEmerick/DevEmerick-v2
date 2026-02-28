@@ -46,7 +46,7 @@ function App() {
             className="watermark absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-auto pointer-events-none z-0"
           />
           {/* Coluna 1: Apresentação */}
-          <div className="presentation text-center lg:text-left order-2 lg:order-1 relative z-10 lg:translate-y-56">
+          <div className="presentation text-center lg:text-left order-2 lg:order-1 relative z-10 lg:translate-y-80">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
               Hey there, <br />
               I'm Emerick{" "}
@@ -74,11 +74,12 @@ function App() {
 
           {/* Coluna 3: About me */}
           <div className="order-3 relative z-10 lg:translate-y-20">
-            <p className="aboutme text-indigo-300 text-2x1 text-center lg:text-left text-lg leading-relaxed max-w-xs sm:max-w-sm lg:max-w-md mx-auto lg:mx-0 lg:translate-y-48 lg:translate-x-14">
-              I’m a Full Stack Developer with 4 years of industry experience,
-              building scalable applications from backend to frontend. I
-              occasionally dive into UX to ensure everything I ship is not just
-              functional, but intuitive and user-friendly.
+            <p className="aboutme text-[rgb(207,207,207)] font-mono font-normal leading-[28px] text-center lg:text-left 
+            text-lg max-w-xs sm:max-w-sm lg:max-w-md mx-auto lg:mx-0 lg:translate-y-60 lg:translate-x-14">
+              My name is Guilherme Emerick, and I am a developer focused on Front-End and Full Stack development,
+              passionate about transforming ideas into real and functional applications.
+              I have experience with React, Next.js, TypeScript, Sass, and CSS, and I am constantly evolving,
+              always studying and improving my projects.
             </p>
           </div>
         </main>
