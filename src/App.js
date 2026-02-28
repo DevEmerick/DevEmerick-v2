@@ -46,7 +46,7 @@ function App() {
           <img
             src="developer.png"
             alt=""
-            className="watermark absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-auto pointer-events-none z-0"
+            className="watermark absolute top-1/2 -translate-y-1/2 -mt-[10px] left-6 right-6 sm:left-10 sm:right-10 lg:left-[100px] lg:right-[100px] h-auto pointer-events-none z-0"
           />
           {/* Coluna 1: Apresentação */}
           <div className="presentation text-center lg:text-left order-2 lg:order-1 relative z-10 lg:translate-y-56">
