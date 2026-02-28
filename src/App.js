@@ -82,8 +82,7 @@ function App() {
             text-lg max-w-xs sm:max-w-sm lg:max-w-md mx-auto lg:mx-0">
               My name is Guilherme Emerick, and I am a developer focused on Front-End and Full Stack development,
               passionate about transforming ideas into real and functional applications.
-              I have experience with React, Next.js, TypeScript, Sass, and CSS, and I am constantly evolving,
-              always studying and improving my projects.
+              I have experience with React, Next.js, TypeScript, Sass, and CSS.
             </p>
           </div>
         </main>
