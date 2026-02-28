@@ -50,7 +50,7 @@ function App() {
 
           {/* Coluna 3: About me */}
           <div className="order-3 relative z-10 lg:translate-y-20">
-            <p className="aboutme text-indigo-300 text-2x1 text-center lg:text-left text-lg leading-relaxed max-w-xs sm:max-w-sm lg:max-w-md mx-auto lg:mx-0 lg:translate-y-52">I’m a Full Stack Developer with 4 years of industry experience, building scalable applications from backend to frontend. I occasionally dive into UX to ensure everything I ship is not just functional, but intuitive and user-friendly.</p>
+            <p className="aboutme text-indigo-300 text-2x1 text-center lg:text-left text-lg leading-relaxed max-w-xs sm:max-w-sm lg:max-w-md mx-auto lg:mx-0 lg:translate-y-48 lg:translate-x-14">I’m a Full Stack Developer with 4 years of industry experience, building scalable applications from backend to frontend. I occasionally dive into UX to ensure everything I ship is not just functional, but intuitive and user-friendly.</p>
           </div>
         </main>
       </div>
