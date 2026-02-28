@@ -1,7 +1,7 @@
 import "./App.css";
 /*import Folder from "./components/animation/folder.js";*/
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faCode, faEnvelope, faArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
   return (
