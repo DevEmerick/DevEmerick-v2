@@ -8,7 +8,9 @@ function App() {
     <div className="App text-white min-h-screen flex flex-col">
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <div className="flex flex-col h-screen max-h-[1080px]">
-        <div className="navmenu bg-gray-900 text-white shadow-lg">
+        
+        {/* Navbar */}
+        <div className="navmenu bg-gray-900 text-white w-[calc(100%-200px)] mx-auto max-w-[1400px]">
           <div className="container mx-auto flex justify-between items-center p-5 lg:px-[100px] relative">
             <a href="#home" className="text-2xl font-bold tracking-tight">
               DevEmerick<span className="text-orange-500">.</span>
@@ -75,8 +77,8 @@ function App() {
           {/* Coluna 3: About me */}
           <div className="order-3 relative z-10 lg:self-end lg:mb-12">
             <p
-              className="aboutme text-[rgb(207,207,207)] font-mono font-normal leading-[28px] text-center lg:text-left 
-            text-lg max-w-xs sm:max-w-sm lg:max-w-md mx-auto lg:mx-0"
+              className="aboutme text-[rgb(207,207,207)] font-mono font-extrabold leading-[28px] text-center lg:text-left 
+            text-lg max-w-xs sm:max-w-sm lg:max-w-md mx-auto lg:mx-0 drop-shadow-md"
             >
               I am a developer focused on Front-End and Full Stack development,
               passionate about transforming ideas into real and functional
