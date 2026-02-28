@@ -6,6 +6,7 @@ import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 function App() {
   return (
     <div className="App text-white min-h-screen flex flex-col">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <div className="flex flex-col h-screen max-h-[1080px]">
         <div className="navmenu bg-gray-900 text-white shadow-lg">
           <div className="container mx-auto flex justify-between items-center p-5 lg:px-[100px] relative">
@@ -45,7 +46,7 @@ function App() {
           <img
             src="developer.png"
             alt=""
-            className="watermark absolute top-1/2 -translate-y-1/2 left-6 right-6 sm:left-10 sm:right-10 lg:left-[100px] lg:right-[100px] h-auto pointer-events-none z-0"
+            className="watermark absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-auto pointer-events-none z-0"
           />
           {/* Coluna 1: Apresentação */}
           <div className="presentation text-center lg:text-left order-2 lg:order-1 relative z-10 lg:translate-y-56">
