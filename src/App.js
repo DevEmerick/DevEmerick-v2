@@ -2,6 +2,8 @@ import "./App.css";
 /*import Folder from "./components/animation/folder.js";*/
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
+import { faReact, faJsSquare, faTailwindCss } from "@fortawesome/free-brands-svg-icons";
+import { faVial } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
   return (
@@ -100,7 +102,60 @@ function App() {
         <div className="container mx-auto px-6 sm:px-10 lg:px-[100px]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
             {/* Card 1 */}
-            <div className="w-full max-w-[432px] h-[395px] border border-green-500 rounded-lg"></div>
+            <div className="w-full max-w-[432px] bg-gray-800 rounded-lg overflow-hidden flex flex-col h-[395px] shadow-lg hover:shadow-xl transition-shadow">
+              {/* Content Container */}
+              <div className="flex-grow flex flex-col p-4 sm:p-5 justify-between relative">
+                {/* Title and Subtitle Images */}
+                <div className="flex flex-col gap-1 items-center">
+                  <img
+                    src="/SpiderMan.png"
+                    alt="Spider-Man"
+                    className="w-3/4 h-auto object-contain"
+                  />
+                  <img
+                    src="/MilesMorales.png"
+                    alt="Miles Morales"
+                    className="w-1/2 h-auto object-contain -translate-y-6 relative z-50"
+                  />
+                </div>
+
+                {/* Spider Character Image */}
+                <div className="absolute top-[100px] left-1/2 -translate-x-1/2 overflow-hidden flex items-center justify-center">
+                  <img
+                    src="/spiderimg.png"
+                    alt="Spider-Man Character"
+                    className="w-[240px] h-[162px] object-cover"
+                  />
+                </div>
+
+                {/* Description */}
+                <p className="absolute bottom-[61px] left-4 right-4 sm:left-5 sm:right-5 text-xs sm:text-sm text-gray-300 leading-relaxed text-center">
+                  Lorem ipsum sed lorem non sit ac libero rhoncus quam ultricies nisl lectus sed vivamus montes volutpat tiguita habitant leo neque.
+                </p>
+
+                {/* Technologies Footer */}
+                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 flex flex-col justify-between h-16">
+                  <div className="flex gap-4 justify-center sm:justify-start">
+                    <div className="flex items-center gap-1 text-gray-300 hover:text-indigo-400 transition-colors">
+                      <FontAwesomeIcon icon={faReact} className="text-sm sm:text-base" />
+                      <span className="text-xs hidden sm:inline">React</span>
+                    </div>
+                    <div className="flex items-center gap-1 text-gray-300 hover:text-indigo-400 transition-colors">
+                      <FontAwesomeIcon icon={faJsSquare} className="text-sm sm:text-base" />
+                      <span className="text-xs hidden sm:inline">JavaScript</span>
+                    </div>
+                    <div className="flex items-center gap-1 text-gray-300 hover:text-indigo-400 transition-colors">
+                      <FontAwesomeIcon icon={faTailwindCss} className="text-sm sm:text-base" />
+                      <span className="text-xs hidden sm:inline">Tailwind</span>
+                    </div>
+                    <div className="flex items-center gap-1 text-gray-300 hover:text-indigo-400 transition-colors">
+                      <FontAwesomeIcon icon={faVial} className="text-sm sm:text-base" />
+                      <span className="text-xs hidden sm:inline">Vite</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             {/* Card 2 */}
             <div className="w-full max-w-[432px] h-[395px] border border-green-500 rounded-lg"></div>
             {/* Card 3 */}
