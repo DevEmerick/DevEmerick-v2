@@ -89,8 +89,7 @@ function App() {
           {/* Seta indicadora de scroll centralizada no bottom */}
           <FontAwesomeIcon
             icon={faArrowDown}
-            className="absolute left-1/2 -translate-x-1/2 bottom-[20px] text-indigo-300 text-2xl animate-bounce z-20"
-            aria-hidden="true"
+            className="absolute left-1/2 -translate-x-1/2 bottom-[20px] text-indigo-300 text-2xl animate-bounce z-20 pointer-events-none"
           />
         </main>
       </div>
