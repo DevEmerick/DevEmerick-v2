@@ -5,7 +5,7 @@ import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
   return (
-    <div className="App text-white min-h-screen flex flex-col scroll-smooth">
+    <div className="App text-white min-h-screen flex flex-col">
       <div className="flex flex-col h-screen max-h-[1080px]">
         
         {/* Navbar */}
@@ -94,22 +94,8 @@ function App() {
           />
         </main>
       </div>
-      <section
-        id="projects"
-        className="relative min-h-screen w-full bg-gray-900 overflow-hidden py-20"
-      >
-        <div className="container mx-auto px-6 sm:px-10 lg:px-[100px]">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
-            {/* Card 1 */}
-            <div className="w-full max-w-[432px] h-[395px] border border-green-500 rounded-lg"></div>
-            {/* Card 2 */}
-            <div className="w-full max-w-[432px] h-[395px] border border-green-500 rounded-lg"></div>
-            {/* Card 3 */}
-            <div className="w-full max-w-[432px] h-[395px] border border-green-500 rounded-lg"></div>
-          </div>
-        </div>
-      </section>
-      <footer className="w-full bg-gray-900"></footer>
+      <div className="projects"></div>
+      <div className="footer"></div>
     </div>
   );
 }
