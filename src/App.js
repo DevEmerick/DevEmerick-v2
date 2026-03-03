@@ -4,8 +4,22 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { faReact, faJsSquare, faTailwindCss } from "@fortawesome/free-brands-svg-icons";
 import { faVial } from "@fortawesome/free-solid-svg-icons";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [showScroll, setShowScroll] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      // Esconde o ícone quando chegar perto do final (90% da página)
+      setShowScroll(scrollTop < docHeight * 0.9);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
     <div className="App text-white min-h-screen flex flex-col scroll-smooth">
       <div className="flex flex-col h-screen max-h-[1080px]">
@@ -91,7 +105,9 @@ function App() {
           {/* Seta indicadora de scroll centralizada no bottom */}
           <FontAwesomeIcon
             icon={faArrowDown}
-            className="absolute left-1/2 -translate-x-1/2 bottom-[20px] text-indigo-300 text-2xl animate-bounce z-20 pointer-events-none"
+            className={`fixed left-1/2 -translate-x-1/2 bottom-[20px] text-indigo-300 text-2xl animate-bounce z-20 pointer-events-none transition-opacity duration-500 ${
+              showScroll ? "opacity-100" : "opacity-0"
+            }`}
           />
         </main>
       </div>
