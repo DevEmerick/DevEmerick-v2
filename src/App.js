@@ -100,9 +100,9 @@ function App() {
         className="relative min-h-screen w-full bg-gray-900 overflow-hidden py-20"
       >
         <div className="container mx-auto px-6 sm:px-10 lg:px-[100px]">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 place-items-center">
             {/* Card 1 */}
-            <div className="w-full max-w-[432px] bg-gray-800 rounded-lg overflow-hidden flex flex-col h-[395px] shadow-lg hover:shadow-xl transition-shadow">
+            <div className="w-full max-w-[432px] rounded-lg overflow-hidden flex flex-col h-[395px] shadow-lg hover:shadow-2xl hover:scale-105 transition-transform duration-700" style={{background: 'linear-gradient(to bottom, #272a31 14%, #020618 98%)'}}>
               {/* Content Container */}
               <div className="flex-grow flex flex-col p-4 sm:p-5 justify-between relative">
                 {/* Title and Subtitle Images */}
@@ -157,9 +157,9 @@ function App() {
               </div>
             </div>
             {/* Card 2 */}
-            <div className="w-full max-w-[432px] h-[395px] border border-green-500 rounded-lg"></div>
+            <div className="w-full max-w-[432px] rounded-lg overflow-hidden flex flex-col h-[395px] shadow-lg hover:shadow-2xl hover:scale-105 transition-transform duration-700 border border-green-500" style={{background: 'linear-gradient(to bottom, #272a31 14%, #020618 98%)'}}></div>
             {/* Card 3 */}
-            <div className="w-full max-w-[432px] h-[395px] border border-green-500 rounded-lg"></div>
+            <div className="w-full max-w-[432px] rounded-lg overflow-hidden flex flex-col h-[395px] shadow-lg hover:shadow-2xl hover:scale-105 transition-transform duration-700 border border-green-500" style={{background: 'linear-gradient(to bottom, #272a31 14%, #020618 98%)'}}></div>
           </div>
         </div>
       </section>
