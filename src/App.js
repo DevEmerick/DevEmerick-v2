@@ -6,7 +6,6 @@ import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 function App() {
   return (
     <div className="App text-white min-h-screen flex flex-col">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <div className="flex flex-col h-screen max-h-[1080px]">
         
         {/* Navbar */}
