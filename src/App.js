@@ -4,11 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { faReact, faJsSquare, faTailwindCss } from "@fortawesome/free-brands-svg-icons";
 // import { faVial } from "@fortawesome/free-solid-svg-icons";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
   const [showScroll, setShowScroll] = useState(true);
-  const scrollTimeoutRef = useRef(null);
 
   useEffect(() => {
     let ticking = false;
