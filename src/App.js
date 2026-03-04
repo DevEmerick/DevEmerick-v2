@@ -1,8 +1,10 @@
 import "./App.css";
 import Folder from "./components/animation/folder.js";
+import MiniProjectCard from "./components/MiniProjectCard.js";
+import MiniLinkCard from "./components/MiniLinkCard.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
-import { faReact, faJsSquare, faTailwindCss } from "@fortawesome/free-brands-svg-icons";
+import { faReact, faJsSquare, faTailwindCss, faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 // import { faVial } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 
@@ -82,11 +84,28 @@ function App() {
                 |
               </span>
             </h1>
-            <div className="mt-8">
+            <div style={{ marginTop: '72px' }}>
               <Folder
                 size={1}
                 color="#5227FF"
                 className="custom-folder"
+                items={[
+                  <MiniLinkCard
+                    icon={faGithub}
+                    label="GitHub"
+                    href="https://github.com/DevEmerick"
+                    bgColor="#24292e"
+                    iconColor="#ffffff"
+                  />,
+                  <MiniLinkCard
+                    icon={faLinkedin}
+                    label="LinkedIn"
+                    href="https://www.linkedin.com/in/guilherme-emerick-26945816a/"
+                    bgColor="#0A66C2"
+                    iconColor="#ffffff"
+                  />,
+                  <MiniProjectCard href="#projects" />
+                ]}
               />
             </div>
           </div>

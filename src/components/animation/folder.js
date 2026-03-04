@@ -87,7 +87,9 @@ const Folder = ({
   const paper2 = darkenColor('#ffffff', 0.05);
   const paper3 = '#ffffff';
 
-  const handleClick = () => {
+  const handleFolderClick = (e) => {
+    // Só alterna se o clique foi na pasta, não nos papéis
+    if (e.target.closest('[data-paper]')) return;
     setOpen(prev => !prev);
     if (open) {
       setPaperOffsets(Array.from({ length: maxItems }, () => ({ x: 0, y: 0 })));
@@ -151,7 +153,7 @@ const Folder = ({
           // Reserva espaço para a aba
           paddingTop: `${tabH}px`
         }}
-        onClick={handleClick}
+        onClick={handleFolderClick}
       >
         <div
           className="relative"
@@ -188,22 +190,26 @@ const Folder = ({
             return (
               <div
                 key={i}
+                data-paper="true"
                 onMouseMove={e => handlePaperMouseMove(e, i)}
                 onMouseLeave={e => handlePaperMouseLeave(e, i)}
                 className={`absolute z-20 bottom-[10%] left-1/2 transition-all duration-300 ease-in-out ${
                   !open
                     ? 'transform -translate-x-1/2 translate-y-[10%] group-hover:translate-y-0'
-                    : 'hover:scale-110'
+                    : 'hover:scale-105'
                 }`}
                 style={{
                   width: `${widthPct}%`,
                   height: `${open ? openHeightPct : closedHeightPct}%`,
                   ...(!open ? {} : { transform: transformStyle }),
-                  backgroundColor: i === 0 ? paper1 : i === 1 ? paper2 : paper3,
-                  borderRadius: `${paperRadius}px`
+                  backgroundColor: item ? 'transparent' : (i === 0 ? paper1 : i === 1 ? paper2 : paper3),
+                  borderRadius: `${paperRadius}px`,
+                  overflow: 'hidden'
                 }}
               >
-                {item}
+                {item ? (
+                  <div className="w-full h-full">{item}</div>
+                ) : null}
               </div>
             );
           })}
