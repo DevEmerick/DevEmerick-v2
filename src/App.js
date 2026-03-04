@@ -25,7 +25,7 @@ function App() {
       <div className="flex flex-col h-screen max-h-[1080px]">
         
         {/* Navbar */}
-        <div className="navmenu bg-gray-900 text-white w-[calc(100%-200px)] mx-auto max-w-[1400px]">
+        <div className="navmenu fixed top-0 left-0 right-0 text-white backdrop-blur-sm z-40 will-change-transform" style={{backgroundColor: 'rgba(15, 23, 42, 0.75)', transform: 'translateZ(0)'}}>
           <div className="container mx-auto flex justify-between items-center p-5 lg:px-[100px] relative">
             <a href="#home" className="text-2xl font-bold tracking-tight">
               DevEmerick<span className="text-orange-500">.</span>
