@@ -127,7 +127,7 @@ function App() {
         className="relative min-h-screen w-full bg-gray-900 overflow-hidden py-20 pt-24"
       >
         <div className="container mx-auto px-6 sm:px-10 lg:px-[100px]">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 place-items-center">
+          <div className="flex justify-center">
             {/* Card 1 */}
             <div className="w-full max-w-[432px] rounded-lg overflow-hidden flex flex-col h-[395px] shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-700" style={{background: 'linear-gradient(to bottom, #272a31 14%, #020618 98%)'}}>
               {/* Content Container */}
@@ -173,20 +173,12 @@ function App() {
                     </div>
                     <div className="flex items-center gap-1 text-gray-300 hover:text-indigo-400 transition-colors">
                       <FontAwesomeIcon icon={faTailwindCss} className="text-sm sm:text-base" />
-                      <span className="text-xs hidden sm:inline">Tailwind</span>
-                    </div>
-                    <div className="flex items-center gap-1 text-gray-300 hover:text-indigo-400 transition-colors">
-                      {/* <FontAwesomeIcon icon={faVial} className="text-sm sm:text-base" /> */}
-                      <span className="text-xs hidden sm:inline">Vite</span>
+                      <span className="text-xs hidden sm:inline">Tailwind + Vite</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            {/* Card 2 */}
-            <div className="w-full max-w-[432px] rounded-lg overflow-hidden flex flex-col h-[395px] shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-700 border border-green-500" style={{background: 'linear-gradient(to bottom, #272a31 14%, #020618 98%)'}}></div>
-            {/* Card 3 */}
-            <div className="w-full max-w-[432px] rounded-lg overflow-hidden flex flex-col h-[395px] shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-700 border border-green-500" style={{background: 'linear-gradient(to bottom, #272a31 14%, #020618 98%)'}}></div>
           </div>
         </div>
       </section>
