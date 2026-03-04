@@ -3,29 +3,37 @@ import "./App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { faReact, faJsSquare, faTailwindCss } from "@fortawesome/free-brands-svg-icons";
-import { faVial } from "@fortawesome/free-solid-svg-icons";
-import { useState, useEffect } from "react";
+// import { faVial } from "@fortawesome/free-solid-svg-icons";
+import { useState, useEffect, useRef } from "react";
 
 function App() {
   const [showScroll, setShowScroll] = useState(true);
+  const scrollTimeoutRef = useRef(null);
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      // Esconde o ícone quando chegar perto do final (90% da página)
-      setShowScroll(scrollTop < docHeight * 0.9);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollTop = window.scrollY;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          setShowScroll(scrollTop < docHeight * 0.9);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return (
-    <div className="App text-white min-h-screen flex flex-col scroll-smooth">
+    <div className="App text-white min-h-screen flex flex-col scroll-smooth" style={{scrollbarGutter: 'stable'}}>
       <div className="flex flex-col h-screen max-h-[1080px]">
         
         {/* Navbar */}
-        <div className="navmenu fixed top-0 left-0 right-0 text-white backdrop-blur-sm z-40 will-change-transform" style={{backgroundColor: 'rgba(15, 23, 42, 0.75)', transform: 'translateZ(0)'}}>
+        <div className="navmenu fixed top-0 left-0 right-0 text-white z-40" style={{backgroundColor: 'rgba(15, 23, 42, 0.85)', WebkitBackdropFilter: 'blur(4px)', backdropFilter: 'blur(4px)'}} >
           <div className="container mx-auto flex justify-between items-center p-5 lg:px-[100px] relative">
             <a href="#home" className="text-2xl font-bold tracking-tight">
               DevEmerick<span className="text-orange-500">.</span>
@@ -75,7 +83,7 @@ function App() {
                 |
               </span>
             </h1>
-            <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 mt-8">
+            <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full shadow-lg mt-8">
               Projects
             </button>
           </div>
@@ -103,22 +111,25 @@ function App() {
           </div>
 
           {/* Seta indicadora de scroll centralizada no bottom */}
-          <FontAwesomeIcon
-            icon={faArrowDown}
-            className={`fixed left-1/2 -translate-x-1/2 bottom-[20px] text-indigo-300 text-2xl animate-bounce z-20 pointer-events-none transition-opacity duration-500 ${
-              showScroll ? "opacity-100" : "opacity-0"
-            }`}
-          />
+          <div className="fixed inset-x-0 bottom-[20px] flex justify-center z-20 pointer-events-none">
+            <FontAwesomeIcon
+              icon={faArrowDown}
+              className={`text-indigo-300 text-2xl ${
+                showScroll ? "opacity-100" : "opacity-0"
+              }`}
+              style={{animation: showScroll ? 'bounce 2s infinite' : 'none', transition: 'opacity 0.5s ease-out'}}
+            />
+          </div>
         </main>
       </div>
       <section
         id="projects"
-        className="relative min-h-screen w-full bg-gray-900 overflow-hidden py-20"
+        className="relative min-h-screen w-full bg-gray-900 overflow-hidden py-20 pt-24"
       >
         <div className="container mx-auto px-6 sm:px-10 lg:px-[100px]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 place-items-center">
             {/* Card 1 */}
-            <div className="w-full max-w-[432px] rounded-lg overflow-hidden flex flex-col h-[395px] shadow-lg hover:shadow-2xl hover:scale-105 transition-transform duration-700" style={{background: 'linear-gradient(to bottom, #272a31 14%, #020618 98%)'}}>
+            <div className="w-full max-w-[432px] rounded-lg overflow-hidden flex flex-col h-[395px] shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-700" style={{background: 'linear-gradient(to bottom, #272a31 14%, #020618 98%)'}}>
               {/* Content Container */}
               <div className="flex-grow flex flex-col p-4 sm:p-5 justify-between relative">
                 {/* Title and Subtitle Images */}
@@ -165,7 +176,7 @@ function App() {
                       <span className="text-xs hidden sm:inline">Tailwind</span>
                     </div>
                     <div className="flex items-center gap-1 text-gray-300 hover:text-indigo-400 transition-colors">
-                      <FontAwesomeIcon icon={faVial} className="text-sm sm:text-base" />
+                      {/* <FontAwesomeIcon icon={faVial} className="text-sm sm:text-base" /> */}
                       <span className="text-xs hidden sm:inline">Vite</span>
                     </div>
                   </div>
@@ -173,9 +184,9 @@ function App() {
               </div>
             </div>
             {/* Card 2 */}
-            <div className="w-full max-w-[432px] rounded-lg overflow-hidden flex flex-col h-[395px] shadow-lg hover:shadow-2xl hover:scale-105 transition-transform duration-700 border border-green-500" style={{background: 'linear-gradient(to bottom, #272a31 14%, #020618 98%)'}}></div>
+            <div className="w-full max-w-[432px] rounded-lg overflow-hidden flex flex-col h-[395px] shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-700 border border-green-500" style={{background: 'linear-gradient(to bottom, #272a31 14%, #020618 98%)'}}></div>
             {/* Card 3 */}
-            <div className="w-full max-w-[432px] rounded-lg overflow-hidden flex flex-col h-[395px] shadow-lg hover:shadow-2xl hover:scale-105 transition-transform duration-700 border border-green-500" style={{background: 'linear-gradient(to bottom, #272a31 14%, #020618 98%)'}}></div>
+            <div className="w-full max-w-[432px] rounded-lg overflow-hidden flex flex-col h-[395px] shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-700 border border-green-500" style={{background: 'linear-gradient(to bottom, #272a31 14%, #020618 98%)'}}></div>
           </div>
         </div>
       </section>
