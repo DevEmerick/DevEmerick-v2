@@ -258,16 +258,25 @@ const Folder = ({
                 ...(open && { transform: 'scaleY(0.6)' })
               }}
             >
-              <span
-                className="tracking-tight text-white drop-shadow-md select-none whitespace-nowrap uppercase"
-                style={{
-                  fontSize: `${Math.max(7, 10 * scale)}px`,
-                  fontWeight: 800,
-                  letterSpacing: `${0.5 * scale}px`
-                }}
-              >
-                {label}
-              </span>
+              {typeof label === 'string' ? (
+                <span
+                  className="tracking-tight text-white drop-shadow-md select-none whitespace-nowrap uppercase"
+                  style={{
+                    fontSize: `${Math.max(7, 10 * scale)}px`,
+                    fontWeight: 800,
+                    letterSpacing: `${0.5 * scale}px`
+                  }}
+                >
+                  {label}
+                </span>
+              ) : (
+                <span
+                  className="text-white drop-shadow-md select-none"
+                  style={{ fontSize: `${Math.max(14, 22 * scale)}px` }}
+                >
+                  {label}
+                </span>
+              )}
             </div>
           )}
         </div>

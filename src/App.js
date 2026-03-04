@@ -3,6 +3,8 @@ import Folder from "./components/animation/folder.js";
 import MiniProjectCard from "./components/MiniProjectCard.js";
 import MiniLinkCard from "./components/MiniLinkCard.js";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faHandPointer } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function App() {
   return (
@@ -64,7 +66,7 @@ function App() {
               <Folder
                 size={1}
                 color="#5227FF"
-                label="PROJECTS"
+                label={<FontAwesomeIcon icon={faHandPointer} className="click-me-icon" />}
                 className="custom-folder"
                 items={[
                   <MiniLinkCard
