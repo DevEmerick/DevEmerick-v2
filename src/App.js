@@ -64,6 +64,7 @@ function App() {
               <Folder
                 size={1}
                 color="#5227FF"
+                label="PROJECTS"
                 className="custom-folder"
                 items={[
                   <MiniLinkCard

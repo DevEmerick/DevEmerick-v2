@@ -32,6 +32,7 @@ const Folder = ({
   responsive = false,
   maxWidth = 200,
   items = [],
+  label = '',
   className = ''
 }) => {
   const maxItems = 3;
@@ -133,6 +134,13 @@ const Folder = ({
     '--paper-3': paper3
   };
 
+  const handleFolderMouseLeave = () => {
+    if (open) {
+      setOpen(false);
+      setPaperOffsets(Array.from({ length: maxItems }, () => ({ x: 0, y: 0 })));
+    }
+  };
+
   return (
     <div
       ref={containerRef}
@@ -142,6 +150,7 @@ const Folder = ({
         width: responsive ? '100%' : undefined,
         maxWidth: responsive ? `${maxWidth}px` : undefined
       }}
+      onMouseLeave={handleFolderMouseLeave}
     >
       <div
         className={`group relative transition-all duration-200 ease-in cursor-pointer ${
@@ -237,6 +246,29 @@ const Folder = ({
               ...(open && { transform: 'skew(-15deg) scaleY(0.6)' })
             }}
           ></div>
+
+          {/* Label na capa - acompanha a perspectiva */}
+          {label && (
+            <div
+              className={`absolute z-40 inset-0 flex items-center justify-center pointer-events-none origin-bottom transition-all duration-300 ease-in-out ${
+                !open ? 'group-hover:[transform:scaleY(0.6)]' : ''
+              }`}
+              style={{
+                ...(open && { transform: 'scaleY(0.6)' })
+              }}
+            >
+              <span
+                className="tracking-tight text-white drop-shadow-md select-none whitespace-nowrap uppercase"
+                style={{
+                  fontSize: `${Math.max(7, 10 * scale)}px`,
+                  fontWeight: 800,
+                  letterSpacing: `${0.5 * scale}px`
+                }}
+              >
+                {label}
+              </span>
+            </div>
+          )}
         </div>
       </div>
     </div>
