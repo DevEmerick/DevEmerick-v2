@@ -213,7 +213,8 @@ const Folder = ({
                   ...(!open ? {} : { transform: transformStyle }),
                   backgroundColor: item ? 'transparent' : (i === 0 ? paper1 : i === 1 ? paper2 : paper3),
                   borderRadius: `${paperRadius}px`,
-                  overflow: 'hidden'
+                  overflow: 'hidden',
+                  pointerEvents: open ? 'auto' : 'none'
                 }}
               >
                 {item ? (

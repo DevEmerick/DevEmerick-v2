@@ -15,10 +15,11 @@ const MiniProjectCard = ({
 }) => {
   const handleClick = (e) => {
     e.stopPropagation();
+    e.preventDefault();
     if (onClick) {
       onClick(e);
     } else if (href) {
-      window.location.href = href;
+      window.open(href, '_blank');
     }
   };
 
@@ -32,21 +33,21 @@ const MiniProjectCard = ({
     >
       {/* Spider-Man title */}
       <img
-        src="/SpiderMan.png"
+        src="/projects/img/SpiderMan.png"
         alt="Spider-Man"
         className="absolute top-[5%] w-[70%] object-contain z-10"
         draggable={false}
       />
       {/* Miles Morales subtitle */}
       <img
-        src="/MilesMorales.png"
+        src="/projects/img/MilesMorales.png"
         alt="Miles Morales"
         className="absolute top-[22%] w-[50%] object-contain z-10"
         draggable={false}
       />
       {/* Spider character */}
       <img
-        src="/spiderimg.png"
+        src="/projects/img/spiderimg.png"
         alt="Spider-Man Character"
         className="absolute bottom-[5%] w-[85%] object-contain z-0"
         draggable={false}
