@@ -1,5 +1,5 @@
 import "./App.css";
-/*import Folder from "./components/animation/folder.js";*/
+import Folder from "./components/animation/folder.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { faReact, faJsSquare, faTailwindCss } from "@fortawesome/free-brands-svg-icons";
@@ -82,9 +82,13 @@ function App() {
                 |
               </span>
             </h1>
-            <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full shadow-lg mt-8">
-              Projects
-            </button>
+            <div className="mt-8">
+              <Folder
+                size={1}
+                color="#5227FF"
+                className="custom-folder"
+              />
+            </div>
           </div>
 
           {/* Coluna 2: Avatar */}
