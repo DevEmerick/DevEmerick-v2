@@ -1,6 +1,8 @@
 {
+  "redirects": [
+    { "source": "/spiderman", "destination": "/spiderman/" }
+  ],
   "rewrites": [
-    { "source": "/spiderman", "destination": "/spiderman/index.html" },
     { "source": "/((?!spiderman).*)", "destination": "/index.html" }
   ]
 }
