@@ -5,8 +5,10 @@ import MiniLinkCard from "./components/MiniLinkCard.js";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faHandPointer } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useRef } from "react";
 
 function App() {
+  const folderRef = useRef(null);
   return (
     <div className="App text-white min-h-screen flex flex-col scroll-smooth" style={{scrollbarGutter: 'stable'}}>
       <div className="flex flex-col h-screen max-h-[1080px]">
@@ -31,6 +33,10 @@ function App() {
               </a>
               <a
                 href="#projects"
+                onClick={(e) => {
+                  e.preventDefault();
+                  folderRef.current?.open();
+                }}
                 className="text-lg hover:text-indigo-400 transition-colors"
               >
                 <span className="text-orange-500">#</span> Projects
@@ -63,29 +69,32 @@ function App() {
               </span>
             </h1>
             <div style={{ marginTop: '72px' }}>
-              <Folder
-                size={1}
-                color="#5227FF"
-                label={<FontAwesomeIcon icon={faHandPointer} className="click-me-icon" />}
-                className="custom-folder"
-                items={[
-                  <MiniLinkCard
-                    icon={faGithub}
-                    label="GitHub"
-                    href="https://github.com/DevEmerick"
-                    bgColor="#24292e"
-                    iconColor="#ffffff"
-                  />,
-                  <MiniLinkCard
-                    icon={faLinkedin}
-                    label="LinkedIn"
-                    href="https://www.linkedin.com/in/guilherme-emerick-26945816a/"
-                    bgColor="#0A66C2"
-                    iconColor="#ffffff"
-                  />,
-                  <MiniProjectCard href="/spiderman" />
-                ]}
-              />
+              <div className="flex items-center gap-6">
+                <Folder
+                  ref={folderRef}
+                  size={1}
+                  color="#5227FF"
+                  label={<FontAwesomeIcon icon={faHandPointer} className="click-me-icon" />}
+                  className="custom-folder"
+                  items={[
+                    <MiniLinkCard
+                      icon={faGithub}
+                      label="GitHub"
+                      href="https://github.com/DevEmerick"
+                      bgColor="#24292e"
+                      iconColor="#ffffff"
+                    />,
+                    <MiniLinkCard
+                      icon={faLinkedin}
+                      label="LinkedIn"
+                      href="https://www.linkedin.com/in/guilherme-emerick-26945816a/"
+                      bgColor="#0A66C2"
+                      iconColor="#ffffff"
+                    />,
+                    <MiniProjectCard href="#projects" />
+                  ]}
+                />
+              </div>
             </div>
           </div>
 

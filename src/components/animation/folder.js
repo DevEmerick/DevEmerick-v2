@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect, useCallback, useImperativeHandle, forwardRef } from 'react';
 
 const darkenColor = (hex, percent) => {
   let color = hex.startsWith('#') ? hex.slice(1) : hex;
@@ -26,7 +26,7 @@ const darkenColor = (hex, percent) => {
  *  - items: array de até 3 elementos React para exibir nos papéis
  *  - className: classes extras no wrapper
  */
-const Folder = ({
+const Folder = forwardRef(({
   color = '#5227FF',
   size = 1,
   responsive = false,
@@ -34,7 +34,7 @@ const Folder = ({
   items = [],
   label = '',
   className = ''
-}) => {
+}, ref) => {
   const maxItems = 3;
   const papers = items.slice(0, maxItems);
   while (papers.length < maxItems) {
@@ -47,6 +47,19 @@ const Folder = ({
   const [paperOffsets, setPaperOffsets] = useState(
     Array.from({ length: maxItems }, () => ({ x: 0, y: 0 }))
   );
+
+  // Expor método imperativo para controlar a pasta de fora
+  useImperativeHandle(ref, () => ({
+    toggle: () => {
+      setOpen(prev => !prev);
+    },
+    open: () => {
+      setOpen(true);
+    },
+    close: () => {
+      setOpen(false);
+    }
+  }));
 
   // Base dimensions (scale = 1)
   const BASE_W = 100;
@@ -283,6 +296,8 @@ const Folder = ({
       </div>
     </div>
   );
-};
+});
+
+Folder.displayName = 'Folder';
 
 export default Folder;
