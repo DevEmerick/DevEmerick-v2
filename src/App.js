@@ -503,6 +503,15 @@ function App() {
       )}
 
       <footer className="w-full bg-gray-900"></footer>
+
+      {/* Floating Contact Button - Mobile Only */}
+      <button
+        onClick={handleContactsClick}
+        className="fixed bottom-6 right-6 laptop:hidden z-40 w-14 h-14 mobile:w-16 mobile:h-16 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 shadow-lg hover:shadow-orange-500/40 flex items-center justify-center text-white text-2xl mobile:text-3xl transition-all duration-300 hover:scale-110 active:scale-95 border border-orange-400/30"
+        title={t('nav.contacts')}
+      >
+        <FontAwesomeIcon icon={faEnvelope} />
+      </button>
     </div>
   );
 }
