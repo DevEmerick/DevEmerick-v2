@@ -3,19 +3,26 @@ import Folder from "./components/animation/folder.js";
 import MiniProjectCard from "./components/MiniProjectCard.js";
 import MiniLinkCard from "./components/MiniLinkCard.js";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import { faHandPointer } from "@fortawesome/free-solid-svg-icons";
+import { faHandPointer, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRef, useState, useEffect } from "react";
 
 function App() {
   const folderRef = useRef(null);
   const [isFolderOpen, setIsFolderOpen] = useState(false);
+  const [isContactsOpen, setIsContactsOpen] = useState(false);
+  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const timeoutRef = useRef(null);
 
   const handleHomeClick = (e) => {
     e.preventDefault();
     // Reload rápido e eficiente
     window.location.href = window.location.pathname;
+  };
+
+  const handleContactsClick = (e) => {
+    e.preventDefault();
+    setIsContactsOpen(!isContactsOpen);
   };
 
   const handleProjectsClick = (e) => {
@@ -86,6 +93,7 @@ function App() {
               </a>
               <a
                 href="#contact"
+                onClick={handleContactsClick}
                 className="text-lg hover:text-indigo-400 transition-colors"
               >
                 <span className="text-orange-500">#</span> Contacts
@@ -165,6 +173,175 @@ function App() {
           </div>
         </main>
       </div>
+
+      {/* Contacts Modal */}
+      {isContactsOpen && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 animate-fadeIn"
+          onClick={() => setIsContactsOpen(false)}
+        >
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 bg-black/50 backdrop-blur-md animate-fadeIn"
+            onClick={() => setIsContactsOpen(false)}
+          ></div>
+          
+          {/* Modal Content */}
+          <div 
+            className="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-8 md:p-10 max-w-3xl w-full shadow-2xl border border-slate-700/60 animate-scaleIn"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setIsContactsOpen(false)}
+              className="absolute top-6 right-6 text-slate-400 hover:text-white transition-colors duration-200 text-3xl font-light leading-none"
+            >
+              ×
+            </button>
+
+            {/* Header */}
+            <div className="mb-8">
+              <h2 className="text-4xl font-bold text-white mb-2">Get in Touch</h2>
+              <p className="text-slate-400">Reach out and let's build something amazing together</p>
+            </div>
+
+            {/* Grid Content */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              
+              {/* Left Side - Contact Info */}
+              <div className="space-y-3">
+                {/* Email */}
+                <a
+                  href="mailto:emerick.perth@gmail.com"
+                  className="group flex flex-col items-center gap-3 p-4 rounded-2xl bg-slate-700/40 hover:bg-slate-700/70 transition-all duration-200 cursor-pointer"
+                >
+                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-orange-500/20 group-hover:bg-orange-500/30 flex items-center justify-center transition-colors duration-200">
+                    <FontAwesomeIcon icon={faEnvelope} className="text-orange-400 text-lg" />
+                  </div>
+                  <div className="text-center">
+                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">Email</p>
+                    <p className="text-white font-semibold group-hover:text-orange-400 transition-colors duration-200">emerick.perth@gmail.com</p>
+                  </div>
+                </a>
+
+                {/* LinkedIn */}
+                <a
+                  href="https://www.linkedin.com/in/guilherme-emerick-26945816a/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex flex-col items-center gap-3 p-4 rounded-2xl bg-slate-700/40 hover:bg-slate-700/70 transition-all duration-200 cursor-pointer"
+                >
+                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-500/20 group-hover:bg-blue-500/30 flex items-center justify-center transition-colors duration-200">
+                    <FontAwesomeIcon icon={faLinkedin} className="text-blue-400 text-lg" />
+                  </div>
+                  <div className="text-center">
+                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">LinkedIn</p>
+                    <p className="text-white font-semibold group-hover:text-blue-400 transition-colors duration-200">Guilherme Emerick</p>
+                  </div>
+                </a>
+
+                {/* GitHub */}
+                <a
+                  href="https://github.com/DevEmerick"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex flex-col items-center gap-3 p-4 rounded-2xl bg-slate-700/40 hover:bg-slate-700/70 transition-all duration-200 cursor-pointer"
+                >
+                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gray-500/20 group-hover:bg-gray-500/30 flex items-center justify-center transition-colors duration-200">
+                    <FontAwesomeIcon icon={faGithub} className="text-gray-300 text-lg" />
+                  </div>
+                  <div className="text-center">
+                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">GitHub</p>
+                    <p className="text-white font-semibold group-hover:text-gray-300 transition-colors duration-200">DevEmerick</p>
+                  </div>
+                </a>
+              </div>
+
+              {/* Right Side - Contact Form */}
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  // Abrir mailto com dados do formulário
+                  const emailBody = `Name: ${formData.name}\nEmail: ${formData.email}\n\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}`;
+                  window.location.href = `mailto:emerick.perth@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(emailBody)}`;
+                  setFormData({ name: '', email: '', subject: '', message: '' });
+                }}
+                className="space-y-4"
+              >
+                {/* Name Input */}
+                <div>
+                  <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    placeholder="John Doe"
+                    required
+                    className="w-full px-4 py-3 rounded-lg bg-slate-700/50 border border-slate-600/50 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-200"
+                  />
+                </div>
+
+                {/* Email Input */}
+                <div>
+                  <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">
+                    Your Email
+                  </label>
+                  <input
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    placeholder="john@example.com"
+                    required
+                    className="w-full px-4 py-3 rounded-lg bg-slate-700/50 border border-slate-600/50 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-200"
+                  />
+                </div>
+
+                {/* Subject Input */}
+                <div>
+                  <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">
+                    Subject
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.subject}
+                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                    placeholder="Project Inquiry"
+                    required
+                    className="w-full px-4 py-3 rounded-lg bg-slate-700/50 border border-slate-600/50 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-200"
+                  />
+                </div>
+
+                {/* Message Textarea */}
+                <div>
+                  <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    placeholder="Tell me about your project, goals, or how we can work together..."
+                    required
+                    rows={4}
+                    className="w-full px-4 py-3 rounded-lg bg-slate-700/50 border border-slate-600/50 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-200 resize-none"
+                  />
+                </div>
+
+                {/* Submit Button */}
+                <button
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-orange-500 via-orange-500 to-orange-600 hover:from-orange-600 hover:via-orange-600 hover:to-orange-700 text-white font-bold py-3.5 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-orange-500/25 active:scale-95"
+                >
+                  Send Message
+                </button>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      )}
+
       <footer className="w-full bg-gray-900"></footer>
     </div>
   );
