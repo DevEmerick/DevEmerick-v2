@@ -5,11 +5,49 @@ import MiniLinkCard from "./components/MiniLinkCard.js";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faHandPointer } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 function App() {
-  const folderRef = useRef(null);
-  return (
+  const folderRef = useRef(null);  const [isFolderOpen, setIsFolderOpen] = useState(false);
+  const timeoutRef = useRef(null);
+
+  const handleProjectsClick = (e) => {
+    e.preventDefault();
+    
+    if (isFolderOpen) {
+      // Se já está aberto, fecha
+      folderRef.current?.close();
+      setIsFolderOpen(false);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    } else {
+      // Se está fechado, abre e inicia o timer
+      folderRef.current?.open();
+      setIsFolderOpen(true);
+      
+      // Limpa timeout anterior se existir
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      
+      // Define novo timeout de 5 segundos
+      timeoutRef.current = setTimeout(() => {
+        folderRef.current?.close();
+        setIsFolderOpen(false);
+      }, 5000);
+    }
+  };
+
+  // Função para chamar quando o usuário interage com a pasta
+  const handleFolderInteract = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  };
+
+  // Limpar timeout ao desmontar
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);  return (
     <div className="App text-white min-h-screen flex flex-col scroll-smooth" style={{scrollbarGutter: 'stable'}}>
       <div className="flex flex-col h-screen max-h-[1080px]">
         
@@ -33,10 +71,7 @@ function App() {
               </a>
               <a
                 href="#projects"
-                onClick={(e) => {
-                  e.preventDefault();
-                  folderRef.current?.open();
-                }}
+                onClick={handleProjectsClick}
                 className="text-lg hover:text-indigo-400 transition-colors"
               >
                 <span className="text-orange-500">#</span> Projects
@@ -76,6 +111,7 @@ function App() {
                   color="#5227FF"
                   label={<FontAwesomeIcon icon={faHandPointer} className="click-me-icon" />}
                   className="custom-folder"
+                  onInteract={handleFolderInteract}
                   items={[
                     <MiniLinkCard
                       icon={faGithub}

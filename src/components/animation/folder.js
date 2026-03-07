@@ -33,7 +33,8 @@ const Folder = forwardRef(({
   maxWidth = 200,
   items = [],
   label = '',
-  className = ''
+  className = '',
+  onInteract = null
 }, ref) => {
   const maxItems = 3;
   const papers = items.slice(0, maxItems);
@@ -108,6 +109,10 @@ const Folder = forwardRef(({
     if (open) {
       setPaperOffsets(Array.from({ length: maxItems }, () => ({ x: 0, y: 0 })));
     }
+    // Notifica que o usuário interagiu com a pasta
+    if (onInteract) {
+      onInteract();
+    }
   };
 
   const handlePaperMouseMove = (e, index) => {
@@ -122,6 +127,10 @@ const Folder = forwardRef(({
       newOffsets[index] = { x: offsetX, y: offsetY };
       return newOffsets;
     });
+    // Cancela o timeout ao interagir com os papéis
+    if (onInteract) {
+      onInteract();
+    }
   };
 
   const handlePaperMouseLeave = (e, index) => {
