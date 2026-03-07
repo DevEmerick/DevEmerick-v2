@@ -95,7 +95,7 @@ function App() {
     };
   }, []);  return (
     <div className="App text-white min-h-screen flex flex-col scroll-smooth" style={{scrollbarGutter: 'stable'}}>
-      <div className="flex flex-col h-screen max-h-[1080px]">
+      <div className="flex flex-col laptop:h-screen laptop:max-h-[1080px]">
         
         {/* Navbar */}
         <div className="navmenu fixed top-0 left-0 right-0 text-white z-40" style={{backgroundColor: 'rgba(15, 23, 42, 0.85)', WebkitBackdropFilter: 'blur(4px)', backdropFilter: 'blur(4px)'}} >
@@ -266,7 +266,7 @@ function App() {
         </div>
 
         {/* Seção de Apresentação (Hero) */}
-        <main className="content container mx-auto flex-grow flex flex-col gap-2 mobile:gap-3 tablet:gap-4 laptop:gap-10 desktop:gap-20 laptop:grid laptop:grid-cols-[1fr_auto_1fr] items-center justify-center px-4 mobile:px-6 laptop:px-10 desktop-lg:px-[100px] relative overflow-hidden pt-20 mobile:pt-24 tablet:pt-28 laptop:pt-0">
+        <main className="content container mx-auto flex-grow flex flex-col gap-6 mobile:gap-6 tablet:gap-8 laptop:gap-10 desktop:gap-20 laptop:grid laptop:grid-cols-[1fr_auto_1fr] items-center justify-center px-4 mobile:px-6 laptop:px-10 desktop-lg:px-[100px] relative overflow-hidden pt-16 mobile:pt-20 tablet:pt-24 laptop:pt-0">
           <img
             src="/projects/img/developer.png"
             alt=""
