@@ -266,7 +266,7 @@ function App() {
         </div>
 
         {/* Seção de Apresentação (Hero) */}
-        <main className="content container mx-auto flex-grow flex flex-col mobile:gap-6 laptop:gap-10 desktop:gap-20 laptop:grid laptop:grid-cols-[1fr_auto_1fr] items-center justify-center px-4 mobile:px-6 laptop:px-10 desktop-lg:px-[100px] relative overflow-hidden">
+        <main className="content container mx-auto flex-grow flex flex-col mobile:gap-6 laptop:gap-10 desktop:gap-20 laptop:grid laptop:grid-cols-[1fr_auto_1fr] items-center justify-center px-4 mobile:px-6 laptop:px-10 desktop-lg:px-[100px] relative overflow-hidden pt-20 mobile:pt-24 tablet:pt-28 laptop:pt-0">
           <img
             src="/projects/img/developer.png"
             alt=""
