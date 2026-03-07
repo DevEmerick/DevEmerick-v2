@@ -3,7 +3,7 @@ import Folder from "./components/animation/folder.js";
 import MiniProjectCard from "./components/MiniProjectCard.js";
 import MiniLinkCard from "./components/MiniLinkCard.js";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import { faHandPointer, faEnvelope, faGlobe } from "@fortawesome/free-solid-svg-icons";
+import { faHandPointer, faEnvelope, faGlobe, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRef, useState, useEffect } from "react";
 import { useTranslation } from 'react-i18next';
@@ -14,6 +14,7 @@ function App() {
   const [isFolderOpen, setIsFolderOpen] = useState(false);
   const [isContactsOpen, setIsContactsOpen] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const timeoutRef = useRef(null);
 
@@ -70,16 +71,19 @@ function App() {
         
         {/* Navbar */}
         <div className="navmenu fixed top-0 left-0 right-0 text-white z-40" style={{backgroundColor: 'rgba(15, 23, 42, 0.85)', WebkitBackdropFilter: 'blur(4px)', backdropFilter: 'blur(4px)'}} >
-          <div className="container mx-auto flex justify-between items-center p-5 lg:px-[100px] relative">
-            <a href="#home" onClick={handleHomeClick} className="text-2xl font-bold tracking-tight">
+          <div className="container mx-auto flex justify-between items-center p-3 mobile:p-5 laptop:px-[100px] relative">
+            {/* Logo/Branding - Sempre visível */}
+            <a href="#home" onClick={handleHomeClick} className="text-lg mobile:text-xl tablet:text-2xl font-bold tracking-tight">
               DevEmerick<span className="text-orange-500">.</span>
             </a>
 
-            <div className="absolute left-1/2 -translate-x-1/2">
+            {/* Logo Centro - Oculto em tablet e abaixo */}
+            <div className="absolute left-1/2 -translate-x-1/2 hidden laptop:block">
               <img src="/projects/img/logo.png" alt="Logo DevEmerick" className="h-7" />
             </div>
 
-            <div className="navlinks flex items-center gap-8">
+            {/* Desktop Navigation - Visível apenas em laptop e acima */}
+            <div className="navlinks hidden laptop:flex items-center gap-8">
               <a
                 href="#home"
                 onClick={handleHomeClick}
@@ -102,7 +106,7 @@ function App() {
                 <span className="text-orange-500">#</span> {t('nav.contacts')}
               </a>
 
-              {/* Language Selector */}
+              {/* Language Selector - Desktop */}
               <div className="relative">
                 <button
                   onClick={() => setIsLanguageOpen(!isLanguageOpen)}
@@ -119,7 +123,7 @@ function App() {
                         i18n.changeLanguage('pt');
                         setIsLanguageOpen(false);
                       }}
-                      className={`w-full px-4 py-3 text-sm text-left hover:bg-slate-700 transition-colors ${ i18n.language === 'pt' ? 'bg-orange-500/20 text-orange-400' : 'text-white'}`}
+                      className={`block w-full px-4 py-3 text-sm text-left hover:bg-slate-700 transition-colors ${ i18n.language === 'pt' ? 'bg-orange-500/20 text-orange-400' : 'text-white'}`}
                     >
                       Português
                     </button>
@@ -128,7 +132,7 @@ function App() {
                         i18n.changeLanguage('en');
                         setIsLanguageOpen(false);
                       }}
-                      className={`w-full px-4 py-3 text-sm text-left hover:bg-slate-700 transition-colors ${ i18n.language === 'en' ? 'bg-orange-500/20 text-orange-400' : 'text-white'}`}
+                      className={`block w-full px-4 py-3 text-sm text-left hover:bg-slate-700 transition-colors ${ i18n.language === 'en' ? 'bg-orange-500/20 text-orange-400' : 'text-white'}`}
                     >
                       English
                     </button>
@@ -137,7 +141,7 @@ function App() {
                         i18n.changeLanguage('es');
                         setIsLanguageOpen(false);
                       }}
-                      className={`w-full px-4 py-3 text-sm text-left hover:bg-slate-700 transition-colors ${ i18n.language === 'es' ? 'bg-orange-500/20 text-orange-400' : 'text-white'}`}
+                      className={`block w-full px-4 py-3 text-sm text-left hover:bg-slate-700 transition-colors ${ i18n.language === 'es' ? 'bg-orange-500/20 text-orange-400' : 'text-white'}`}
                     >
                       Español
                     </button>
@@ -145,19 +149,104 @@ function App() {
                 )}
               </div>
             </div>
+
+            {/* Hamburger Menu - Visível apenas em tablet e abaixo */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="laptop:hidden text-orange-500 text-2xl hover:text-orange-400 transition-colors duration-200"
+            >
+              <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} />
+            </button>
           </div>
+
+          {/* Mobile Menu - Dropdown */}
+          {isMenuOpen && (
+            <div className="laptop:hidden bg-slate-900/95 backdrop-blur-md border-t border-slate-700 animate-fadeIn">
+              <div className="flex flex-col px-4 mobile:px-6 py-4 space-y-3 mobile:space-y-4">
+                {/* Home Link */}
+                <a
+                  href="#home"
+                  onClick={(e) => {
+                    handleHomeClick(e);
+                    setIsMenuOpen(false);
+                  }}
+                  className="text-sm mobile:text-base text-white hover:text-indigo-400 transition-colors py-2"
+                >
+                  <span className="text-orange-500">#</span> {t('nav.home')}
+                </a>
+
+                {/* Projects Link */}
+                <a
+                  href="#projects"
+                  onClick={(e) => {
+                    handleProjectsClick(e);
+                    setIsMenuOpen(false);
+                  }}
+                  className="text-sm mobile:text-base text-white hover:text-indigo-400 transition-colors py-2"
+                >
+                  <span className="text-orange-500">#</span> {t('nav.projects')}
+                </a>
+
+                {/* Contacts Link */}
+                <a
+                  href="#contact"
+                  onClick={(e) => {
+                    handleContactsClick(e);
+                    setIsMenuOpen(false);
+                  }}
+                  className="text-sm mobile:text-base text-white hover:text-indigo-400 transition-colors py-2"
+                >
+                  <span className="text-orange-500">#</span> {t('nav.contacts')}
+                </a>
+
+                {/* Language Selector - Mobile */}
+                <div className="border-t border-slate-700 pt-3 mobile:pt-4 mt-3 mobile:mt-4">
+                  <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">Idioma</p>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => {
+                        i18n.changeLanguage('pt');
+                        setIsMenuOpen(false);
+                      }}
+                      className={`flex-1 px-3 py-2 rounded-lg text-sm font-semibold transition-colors ${ i18n.language === 'pt' ? 'bg-orange-500/20 text-orange-400' : 'bg-slate-700/50 text-white hover:bg-slate-700'}`}
+                    >
+                      PT
+                    </button>
+                    <button
+                      onClick={() => {
+                        i18n.changeLanguage('en');
+                        setIsMenuOpen(false);
+                      }}
+                      className={`flex-1 px-3 py-2 rounded-lg text-sm font-semibold transition-colors ${ i18n.language === 'en' ? 'bg-orange-500/20 text-orange-400' : 'bg-slate-700/50 text-white hover:bg-slate-700'}`}
+                    >
+                      EN
+                    </button>
+                    <button
+                      onClick={() => {
+                        i18n.changeLanguage('es');
+                        setIsMenuOpen(false);
+                      }}
+                      className={`flex-1 px-3 py-2 rounded-lg text-sm font-semibold transition-colors ${ i18n.language === 'es' ? 'bg-orange-500/20 text-orange-400' : 'bg-slate-700/50 text-white hover:bg-slate-700'}`}
+                    >
+                      ES
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Seção de Apresentação (Hero) */}
-        <main className="content container mx-auto flex-grow flex flex-col lg:grid lg:grid-cols-[1fr_auto_1fr] items-center justify-center px-6 sm:px-10 lg:px-[100px] gap-10 lg:gap-20 relative overflow-hidden">
+        <main className="content container mx-auto flex-grow flex flex-col mobile:gap-6 laptop:gap-10 desktop:gap-20 laptop:grid laptop:grid-cols-[1fr_auto_1fr] items-center justify-center px-4 mobile:px-6 laptop:px-10 desktop-lg:px-[100px] relative overflow-hidden">
           <img
             src="/projects/img/developer.png"
             alt=""
-            className="watermark absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-auto pointer-events-none z-0 scale-[0.85]"
+            className="watermark hidden laptop:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-auto pointer-events-none z-0 scale-[0.85]"
           />
           {/* Coluna 1: Apresentação */}
-          <div className="presentation text-center lg:text-left order-2 lg:order-1 relative z-10 lg:translate-y-56 w-[calc(100%+15px)]">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
+          <div className="presentation text-center laptop:text-left order-2 laptop:order-1 relative z-10 laptop:translate-y-56 w-[calc(100%+15px)]">
+            <h1 className="text-2xl mobile:text-3xl mobile-lg:text-4xl tablet:text-5xl laptop:text-6xl font-bold leading-tight">
               {t('hero.greeting')} <br />
               {t('hero.name')}{" "}
               <span className="text-white animate-blink ml-1 inline-block transform scale-x-75 scale-y-90">
@@ -165,8 +254,8 @@ function App() {
                 |
               </span>
             </h1>
-            <div style={{ marginTop: '72px' }}>
-              <div className="flex items-center gap-6">
+            <div style={{ marginTop: '32px' }} className="mobile:mt-[48px] laptop:mt-[72px]">
+              <div className="flex items-center justify-center laptop:justify-start gap-4 mobile:gap-6">
                 <Folder
                   ref={folderRef}
                   size={1}
@@ -197,19 +286,19 @@ function App() {
           </div>
 
           {/* Coluna 2: Avatar */}
-          <div className="avatar order-1 lg:order-2 relative z-10 flex flex-col items-center justify-center lg:translate-y-20">
+          <div className="avatar order-1 laptop:order-2 relative z-10 flex flex-col items-center justify-center laptop:translate-y-20">
             <img
               src="/projects/img/avatar.png"
               alt="Avatar de Emerick"
-              className="w-full max-w-[300px] md:max-w-[400px] lg:max-w-[450px] h-auto object-contain"
+              className="w-full max-w-[160px] mobile:max-w-[200px] mobile-lg:max-w-[240px] tablet:max-w-[280px] laptop:max-w-[450px] h-auto object-contain"
             />
           </div>
 
           {/* Coluna 3: About me */}
-          <div className="order-3 relative z-10 lg:self-end lg:mb-12">
+          <div className="order-3 relative z-10 laptop:self-end laptop:mb-12">
             <p
-              className="aboutme text-[rgb(207,207,207)] font-mono font-extrabold leading-[28px] text-center lg:text-left 
-            text-lg max-w-xs sm:max-w-sm lg:max-w-md mx-auto lg:mx-0 drop-shadow-md"
+              className="aboutme text-[rgb(207,207,207)] font-mono font-extrabold leading-[20px] mobile:leading-[24px] laptop:leading-[28px] text-center laptop:text-left 
+            text-xs mobile:text-sm laptop:text-lg max-w-xs mobile:max-w-sm laptop:max-w-md mx-auto laptop:mx-0 drop-shadow-md"
             >
               {t('hero.description')}
             </p>
@@ -220,7 +309,7 @@ function App() {
       {/* Contacts Modal */}
       {isContactsOpen && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 animate-fadeIn"
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 mobile:p-4 animate-fadeIn"
           onClick={() => setIsContactsOpen(false)}
         >
           {/* Backdrop */}
@@ -231,39 +320,39 @@ function App() {
           
           {/* Modal Content */}
           <div 
-            className="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-8 md:p-10 max-w-3xl w-full shadow-2xl border border-slate-700/60 animate-scaleIn"
+            className="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl mobile:rounded-3xl p-5 mobile:p-8 tablet:p-10 max-w-3xl w-full shadow-2xl border border-slate-700/60 animate-scaleIn"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
               onClick={() => setIsContactsOpen(false)}
-              className="absolute top-6 right-6 text-slate-400 hover:text-white transition-colors duration-200 text-3xl font-light leading-none"
+              className="absolute top-3 mobile:top-6 right-3 mobile:right-6 text-slate-400 hover:text-white transition-colors duration-200 text-2xl mobile:text-3xl font-light leading-none"
             >
               ×
             </button>
 
             {/* Header */}
-            <div className="mb-8">
-              <h2 className="text-4xl font-bold text-white mb-2">{t('contacts_modal.title')}</h2>
-              <p className="text-slate-400">{t('contacts_modal.subtitle')}</p>
+            <div className="mb-5 mobile:mb-8">
+              <h2 className="text-2xl mobile:text-3xl tablet:text-4xl font-bold text-white mb-1 mobile:mb-2">{t('contacts_modal.title')}</h2>
+              <p className="text-xs mobile:text-sm tablet:text-base text-slate-400">{t('contacts_modal.subtitle')}</p>
             </div>
 
             {/* Grid Content */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 tablet:grid-cols-2 gap-5 mobile:gap-8">
               
               {/* Left Side - Contact Info */}
-              <div className="space-y-3">
+              <div className="space-y-2 mobile:space-y-3">
                 {/* Email */}
                 <a
                   href="mailto:emerick.perth@gmail.com"
-                  className="group flex flex-col items-center gap-3 p-4 rounded-2xl bg-slate-700/40 hover:bg-slate-700/70 transition-all duration-200 cursor-pointer"
+                  className="group flex flex-col items-center gap-2 mobile:gap-3 p-3 mobile:p-4 rounded-xl mobile:rounded-2xl bg-slate-700/40 hover:bg-slate-700/70 transition-all duration-200 cursor-pointer"
                 >
-                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-orange-500/20 group-hover:bg-orange-500/30 flex items-center justify-center transition-colors duration-200">
-                    <FontAwesomeIcon icon={faEnvelope} className="text-orange-400 text-lg" />
+                  <div className="flex-shrink-0 w-10 mobile:w-12 h-10 mobile:h-12 rounded-lg mobile:rounded-xl bg-orange-500/20 group-hover:bg-orange-500/30 flex items-center justify-center transition-colors duration-200">
+                    <FontAwesomeIcon icon={faEnvelope} className="text-orange-400 text-sm mobile:text-lg" />
                   </div>
                   <div className="text-center">
                     <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">{t('contacts_modal.email_label')}</p>
-                    <p className="text-white font-semibold group-hover:text-orange-400 transition-colors duration-200">emerick.perth@gmail.com</p>
+                    <p className="text-white font-semibold group-hover:text-orange-400 transition-colors duration-200 text-xs mobile:text-sm">emerick.perth@gmail.com</p>
                   </div>
                 </a>
 
@@ -272,14 +361,14 @@ function App() {
                   href="https://www.linkedin.com/in/guilherme-emerick-26945816a/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex flex-col items-center gap-3 p-4 rounded-2xl bg-slate-700/40 hover:bg-slate-700/70 transition-all duration-200 cursor-pointer"
+                  className="group flex flex-col items-center gap-2 mobile:gap-3 p-3 mobile:p-4 rounded-xl mobile:rounded-2xl bg-slate-700/40 hover:bg-slate-700/70 transition-all duration-200 cursor-pointer"
                 >
-                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-500/20 group-hover:bg-blue-500/30 flex items-center justify-center transition-colors duration-200">
-                    <FontAwesomeIcon icon={faLinkedin} className="text-blue-400 text-lg" />
+                  <div className="flex-shrink-0 w-10 mobile:w-12 h-10 mobile:h-12 rounded-lg mobile:rounded-xl bg-blue-500/20 group-hover:bg-blue-500/30 flex items-center justify-center transition-colors duration-200">
+                    <FontAwesomeIcon icon={faLinkedin} className="text-blue-400 text-sm mobile:text-lg" />
                   </div>
                   <div className="text-center">
                     <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">{t('contacts_modal.linkedin_label')}</p>
-                    <p className="text-white font-semibold group-hover:text-blue-400 transition-colors duration-200">Guilherme Emerick</p>
+                    <p className="text-white font-semibold group-hover:text-blue-400 transition-colors duration-200 text-xs mobile:text-sm">Guilherme Emerick</p>
                   </div>
                 </a>
 
@@ -288,14 +377,14 @@ function App() {
                   href="https://github.com/DevEmerick"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex flex-col items-center gap-3 p-4 rounded-2xl bg-slate-700/40 hover:bg-slate-700/70 transition-all duration-200 cursor-pointer"
+                  className="group flex flex-col items-center gap-2 mobile:gap-3 p-3 mobile:p-4 rounded-xl mobile:rounded-2xl bg-slate-700/40 hover:bg-slate-700/70 transition-all duration-200 cursor-pointer"
                 >
-                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gray-500/20 group-hover:bg-gray-500/30 flex items-center justify-center transition-colors duration-200">
-                    <FontAwesomeIcon icon={faGithub} className="text-gray-300 text-lg" />
+                  <div className="flex-shrink-0 w-10 mobile:w-12 h-10 mobile:h-12 rounded-lg mobile:rounded-xl bg-gray-500/20 group-hover:bg-gray-500/30 flex items-center justify-center transition-colors duration-200">
+                    <FontAwesomeIcon icon={faGithub} className="text-gray-300 text-sm mobile:text-lg" />
                   </div>
                   <div className="text-center">
                     <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">{t('contacts_modal.github_label')}</p>
-                    <p className="text-white font-semibold group-hover:text-gray-300 transition-colors duration-200">DevEmerick</p>
+                    <p className="text-white font-semibold group-hover:text-gray-300 transition-colors duration-200 text-xs mobile:text-sm">DevEmerick</p>
                   </div>
                 </a>
               </div>
@@ -309,11 +398,11 @@ function App() {
                   window.location.href = `mailto:emerick.perth@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(emailBody)}`;
                   setFormData({ name: '', email: '', subject: '', message: '' });
                 }}
-                className="space-y-4"
+                className="space-y-2 mobile:space-y-4"
               >
                 {/* Name Input */}
                 <div>
-                  <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">
+                  <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wide mb-1 mobile:mb-2">
                     {t('contacts_modal.form.name_label')}
                   </label>
                   <input
@@ -322,13 +411,13 @@ function App() {
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder={t('contacts_modal.form.name_placeholder')}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-slate-700/50 border border-slate-600/50 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-200"
+                    className="w-full px-3 mobile:px-4 py-2 mobile:py-3 rounded-lg bg-slate-700/50 border border-slate-600/50 text-xs mobile:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-200"
                   />
                 </div>
 
                 {/* Email Input */}
                 <div>
-                  <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">
+                  <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wide mb-1 mobile:mb-2">
                     {t('contacts_modal.form.email_label')}
                   </label>
                   <input
@@ -337,13 +426,13 @@ function App() {
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder={t('contacts_modal.form.email_placeholder')}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-slate-700/50 border border-slate-600/50 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-200"
+                    className="w-full px-3 mobile:px-4 py-2 mobile:py-3 rounded-lg bg-slate-700/50 border border-slate-600/50 text-xs mobile:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-200"
                   />
                 </div>
 
                 {/* Subject Input */}
                 <div>
-                  <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">
+                  <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wide mb-1 mobile:mb-2">
                     {t('contacts_modal.form.subject_label')}
                   </label>
                   <input
@@ -352,13 +441,13 @@ function App() {
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                     placeholder={t('contacts_modal.form.subject_placeholder')}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-slate-700/50 border border-slate-600/50 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-200"
+                    className="w-full px-3 mobile:px-4 py-2 mobile:py-3 rounded-lg bg-slate-700/50 border border-slate-600/50 text-xs mobile:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-200"
                   />
                 </div>
 
                 {/* Message Textarea */}
                 <div>
-                  <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">
+                  <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wide mb-1 mobile:mb-2">
                     {t('contacts_modal.form.message_label')}
                   </label>
                   <textarea
@@ -366,15 +455,15 @@ function App() {
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder={t('contacts_modal.form.message_placeholder')}
                     required
-                    rows={4}
-                    className="w-full px-4 py-3 rounded-lg bg-slate-700/50 border border-slate-600/50 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-200 resize-none"
+                    rows={3}
+                    className="w-full px-3 mobile:px-4 py-2 mobile:py-3 rounded-lg bg-slate-700/50 border border-slate-600/50 text-xs mobile:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-200 resize-none"
                   />
                 </div>
 
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-orange-500 via-orange-500 to-orange-600 hover:from-orange-600 hover:via-orange-600 hover:to-orange-700 text-white font-bold py-3.5 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-orange-500/25 active:scale-95"
+                  className="w-full bg-gradient-to-r from-orange-500 via-orange-500 to-orange-600 hover:from-orange-600 hover:via-orange-600 hover:to-orange-700 text-white font-bold py-2 mobile:py-3.5 px-4 mobile:px-6 rounded-lg mobile:rounded-xl transition-all duration-300 shadow-lg hover:shadow-orange-500/25 active:scale-95 text-sm mobile:text-base"
                 >
                   {t('contacts_modal.form.submit')}
                 </button>
