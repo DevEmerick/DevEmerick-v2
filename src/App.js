@@ -348,39 +348,39 @@ function App() {
           
           {/* Modal Content */}
           <div 
-            className="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl mobile:rounded-3xl p-5 mobile:p-8 tablet:p-10 max-w-3xl w-full shadow-2xl border border-slate-700/60 animate-scaleIn"
+            className="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl mobile:rounded-2xl p-3 mobile:p-5 tablet:p-10 max-w-3xl w-full shadow-2xl border border-slate-700/60 animate-scaleIn max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
               onClick={() => setIsContactsOpen(false)}
-              className="absolute top-3 mobile:top-6 right-3 mobile:right-6 text-slate-400 hover:text-white transition-colors duration-200 text-2xl mobile:text-3xl font-light leading-none"
+              className="absolute top-2 mobile:top-4 right-2 mobile:right-4 text-slate-400 hover:text-white transition-colors duration-200 text-xl mobile:text-2xl font-light leading-none"
             >
               ×
             </button>
 
             {/* Header */}
-            <div className="mb-5 mobile:mb-8">
-              <h2 className="text-2xl mobile:text-3xl tablet:text-4xl font-bold text-white mb-1 mobile:mb-2">{t('contacts_modal.title')}</h2>
-              <p className="text-xs mobile:text-sm tablet:text-base text-slate-400">{t('contacts_modal.subtitle')}</p>
+            <div className="mb-3 mobile:mb-5">
+              <h2 className="text-xl mobile:text-2xl tablet:text-4xl font-bold text-white mb-0.5 mobile:mb-1">{t('contacts_modal.title')}</h2>
+              <p className="text-xs mobile:text-xs tablet:text-base text-slate-400 leading-tight">{t('contacts_modal.subtitle')}</p>
             </div>
 
             {/* Grid Content */}
-            <div className="grid grid-cols-1 tablet:grid-cols-2 gap-5 mobile:gap-8">
+            <div className="grid grid-cols-1 tablet:grid-cols-2 gap-3 mobile:gap-4">
               
               {/* Left Side - Contact Info */}
-              <div className="space-y-2 mobile:space-y-3">
+              <div className="space-y-1.5 mobile:space-y-2 hidden tablet:block">
                 {/* Email */}
                 <a
                   href="mailto:emerick.perth@gmail.com"
-                  className="group flex flex-col items-center gap-2 mobile:gap-3 p-3 mobile:p-4 rounded-xl mobile:rounded-2xl bg-slate-700/40 hover:bg-slate-700/70 transition-all duration-200 cursor-pointer"
+                  className="group flex flex-col items-center gap-1.5 p-2 mobile:p-4 rounded-lg bg-slate-700/40 hover:bg-slate-700/70 transition-all duration-200 cursor-pointer"
                 >
-                  <div className="flex-shrink-0 w-10 mobile:w-12 h-10 mobile:h-12 rounded-lg mobile:rounded-xl bg-orange-500/20 group-hover:bg-orange-500/30 flex items-center justify-center transition-colors duration-200">
-                    <FontAwesomeIcon icon={faEnvelope} className="text-orange-400 text-sm mobile:text-lg" />
+                  <div className="flex-shrink-0 w-8 mobile:w-12 h-8 mobile:h-12 rounded-lg bg-orange-500/20 group-hover:bg-orange-500/30 flex items-center justify-center transition-colors duration-200">
+                    <FontAwesomeIcon icon={faEnvelope} className="text-orange-400 text-xs mobile:text-lg" />
                   </div>
                   <div className="text-center">
-                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">{t('contacts_modal.email_label')}</p>
-                    <p className="text-white font-semibold group-hover:text-orange-400 transition-colors duration-200 text-xs mobile:text-sm">emerick.perth@gmail.com</p>
+                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide leading-tight">{t('contacts_modal.email_label')}</p>
+                    <p className="text-white font-semibold group-hover:text-orange-400 transition-colors duration-200 text-xs">emerick.perth@gmail.com</p>
                   </div>
                 </a>
 
@@ -389,14 +389,14 @@ function App() {
                   href="https://www.linkedin.com/in/guilherme-emerick-26945816a/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex flex-col items-center gap-2 mobile:gap-3 p-3 mobile:p-4 rounded-xl mobile:rounded-2xl bg-slate-700/40 hover:bg-slate-700/70 transition-all duration-200 cursor-pointer"
+                  className="group flex flex-col items-center gap-1.5 p-2 mobile:p-4 rounded-lg bg-slate-700/40 hover:bg-slate-700/70 transition-all duration-200 cursor-pointer"
                 >
-                  <div className="flex-shrink-0 w-10 mobile:w-12 h-10 mobile:h-12 rounded-lg mobile:rounded-xl bg-blue-500/20 group-hover:bg-blue-500/30 flex items-center justify-center transition-colors duration-200">
-                    <FontAwesomeIcon icon={faLinkedin} className="text-blue-400 text-sm mobile:text-lg" />
+                  <div className="flex-shrink-0 w-8 mobile:w-12 h-8 mobile:h-12 rounded-lg bg-blue-500/20 group-hover:bg-blue-500/30 flex items-center justify-center transition-colors duration-200">
+                    <FontAwesomeIcon icon={faLinkedin} className="text-blue-400 text-xs mobile:text-lg" />
                   </div>
                   <div className="text-center">
-                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">{t('contacts_modal.linkedin_label')}</p>
-                    <p className="text-white font-semibold group-hover:text-blue-400 transition-colors duration-200 text-xs mobile:text-sm">Guilherme Emerick</p>
+                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide leading-tight">{t('contacts_modal.linkedin_label')}</p>
+                    <p className="text-white font-semibold group-hover:text-blue-400 transition-colors duration-200 text-xs">Guilherme Emerick</p>
                   </div>
                 </a>
 
@@ -405,14 +405,14 @@ function App() {
                   href="https://github.com/DevEmerick"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex flex-col items-center gap-2 mobile:gap-3 p-3 mobile:p-4 rounded-xl mobile:rounded-2xl bg-slate-700/40 hover:bg-slate-700/70 transition-all duration-200 cursor-pointer"
+                  className="group flex flex-col items-center gap-1.5 p-2 mobile:p-4 rounded-lg bg-slate-700/40 hover:bg-slate-700/70 transition-all duration-200 cursor-pointer"
                 >
-                  <div className="flex-shrink-0 w-10 mobile:w-12 h-10 mobile:h-12 rounded-lg mobile:rounded-xl bg-gray-500/20 group-hover:bg-gray-500/30 flex items-center justify-center transition-colors duration-200">
-                    <FontAwesomeIcon icon={faGithub} className="text-gray-300 text-sm mobile:text-lg" />
+                  <div className="flex-shrink-0 w-8 mobile:w-12 h-8 mobile:h-12 rounded-lg bg-gray-500/20 group-hover:bg-gray-500/30 flex items-center justify-center transition-colors duration-200">
+                    <FontAwesomeIcon icon={faGithub} className="text-gray-300 text-xs mobile:text-lg" />
                   </div>
                   <div className="text-center">
-                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">{t('contacts_modal.github_label')}</p>
-                    <p className="text-white font-semibold group-hover:text-gray-300 transition-colors duration-200 text-xs mobile:text-sm">DevEmerick</p>
+                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide leading-tight">{t('contacts_modal.github_label')}</p>
+                    <p className="text-white font-semibold group-hover:text-gray-300 transition-colors duration-200 text-xs">DevEmerick</p>
                   </div>
                 </a>
               </div>
@@ -426,11 +426,11 @@ function App() {
                   window.location.href = `mailto:emerick.perth@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(emailBody)}`;
                   setFormData({ name: '', email: '', subject: '', message: '' });
                 }}
-                className="space-y-2 mobile:space-y-4"
+                className="space-y-1.5 mobile:space-y-2"
               >
                 {/* Name Input */}
                 <div>
-                  <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wide mb-1 mobile:mb-2">
+                  <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wide mb-0.5">
                     {t('contacts_modal.form.name_label')}
                   </label>
                   <input
@@ -439,13 +439,13 @@ function App() {
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder={t('contacts_modal.form.name_placeholder')}
                     required
-                    className="w-full px-3 mobile:px-4 py-2 mobile:py-3 rounded-lg bg-slate-700/50 border border-slate-600/50 text-xs mobile:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-200"
+                    className="w-full px-2.5 mobile:px-3 py-1.5 mobile:py-2 rounded-lg bg-slate-700/50 border border-slate-600/50 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500/20 transition-all duration-200"
                   />
                 </div>
 
                 {/* Email Input */}
                 <div>
-                  <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wide mb-1 mobile:mb-2">
+                  <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wide mb-0.5">
                     {t('contacts_modal.form.email_label')}
                   </label>
                   <input
@@ -454,13 +454,13 @@ function App() {
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder={t('contacts_modal.form.email_placeholder')}
                     required
-                    className="w-full px-3 mobile:px-4 py-2 mobile:py-3 rounded-lg bg-slate-700/50 border border-slate-600/50 text-xs mobile:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-200"
+                    className="w-full px-2.5 mobile:px-3 py-1.5 mobile:py-2 rounded-lg bg-slate-700/50 border border-slate-600/50 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500/20 transition-all duration-200"
                   />
                 </div>
 
                 {/* Subject Input */}
                 <div>
-                  <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wide mb-1 mobile:mb-2">
+                  <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wide mb-0.5">
                     {t('contacts_modal.form.subject_label')}
                   </label>
                   <input
@@ -469,13 +469,13 @@ function App() {
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                     placeholder={t('contacts_modal.form.subject_placeholder')}
                     required
-                    className="w-full px-3 mobile:px-4 py-2 mobile:py-3 rounded-lg bg-slate-700/50 border border-slate-600/50 text-xs mobile:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-200"
+                    className="w-full px-2.5 mobile:px-3 py-1.5 mobile:py-2 rounded-lg bg-slate-700/50 border border-slate-600/50 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500/20 transition-all duration-200"
                   />
                 </div>
 
                 {/* Message Textarea */}
                 <div>
-                  <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wide mb-1 mobile:mb-2">
+                  <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wide mb-0.5">
                     {t('contacts_modal.form.message_label')}
                   </label>
                   <textarea
@@ -483,15 +483,15 @@ function App() {
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder={t('contacts_modal.form.message_placeholder')}
                     required
-                    rows={3}
-                    className="w-full px-3 mobile:px-4 py-2 mobile:py-3 rounded-lg bg-slate-700/50 border border-slate-600/50 text-xs mobile:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-200 resize-none"
+                    rows={2}
+                    className="w-full px-2.5 mobile:px-3 py-1.5 mobile:py-2 rounded-lg bg-slate-700/50 border border-slate-600/50 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500/20 transition-all duration-200 resize-none"
                   />
                 </div>
 
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-orange-500 via-orange-500 to-orange-600 hover:from-orange-600 hover:via-orange-600 hover:to-orange-700 text-white font-bold py-2 mobile:py-3.5 px-4 mobile:px-6 rounded-lg mobile:rounded-xl transition-all duration-300 shadow-lg hover:shadow-orange-500/25 active:scale-95 text-sm mobile:text-base"
+                  className="w-full bg-gradient-to-r from-orange-500 via-orange-500 to-orange-600 hover:from-orange-600 hover:via-orange-600 hover:to-orange-700 text-white font-bold py-1.5 mobile:py-2 px-3 mobile:px-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-orange-500/25 active:scale-95 text-xs mobile:text-sm"
                 >
                   {t('contacts_modal.form.submit')}
                 </button>
@@ -507,7 +507,7 @@ function App() {
       {/* Floating Contact Button - Mobile Only */}
       <button
         onClick={handleContactsClick}
-        className="fixed bottom-6 right-6 laptop:hidden z-40 w-14 h-14 mobile:w-16 mobile:h-16 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 shadow-lg hover:shadow-orange-500/40 flex items-center justify-center text-white text-2xl mobile:text-3xl transition-all duration-300 hover:scale-110 active:scale-95 border border-orange-400/30"
+        className="fixed bottom-5 right-5 laptop:hidden z-40 w-12 h-12 mobile:w-13 mobile:h-13 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 hover:opacity-100 opacity-75 shadow-lg hover:shadow-orange-500/40 flex items-center justify-center text-white text-lg mobile:text-xl transition-all duration-300 hover:scale-110 active:scale-95 border border-orange-400/30"
         title={t('nav.contacts')}
       >
         <FontAwesomeIcon icon={faEnvelope} />
