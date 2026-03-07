@@ -278,7 +278,7 @@ function App() {
                       bgColor="#0A66C2"
                       iconColor="#ffffff"
                     />,
-                    <MiniProjectCard href="#projects" />
+                    <MiniProjectCard href="https://spider-man-lake.vercel.app/" />
                   ]}
                 />
               </div>
