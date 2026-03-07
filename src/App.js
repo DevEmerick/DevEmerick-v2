@@ -8,8 +8,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRef, useState, useEffect } from "react";
 
 function App() {
-  const folderRef = useRef(null);  const [isFolderOpen, setIsFolderOpen] = useState(false);
+  const folderRef = useRef(null);
+  const [isFolderOpen, setIsFolderOpen] = useState(false);
   const timeoutRef = useRef(null);
+
+  const handleHomeClick = (e) => {
+    e.preventDefault();
+    // Reload rápido e eficiente
+    window.location.href = window.location.pathname;
+  };
 
   const handleProjectsClick = (e) => {
     e.preventDefault();
@@ -54,7 +61,7 @@ function App() {
         {/* Navbar */}
         <div className="navmenu fixed top-0 left-0 right-0 text-white z-40" style={{backgroundColor: 'rgba(15, 23, 42, 0.85)', WebkitBackdropFilter: 'blur(4px)', backdropFilter: 'blur(4px)'}} >
           <div className="container mx-auto flex justify-between items-center p-5 lg:px-[100px] relative">
-            <a href="#home" className="text-2xl font-bold tracking-tight">
+            <a href="#home" onClick={handleHomeClick} className="text-2xl font-bold tracking-tight">
               DevEmerick<span className="text-orange-500">.</span>
             </a>
 
@@ -65,6 +72,7 @@ function App() {
             <div className="navlinks flex items-center gap-8">
               <a
                 href="#home"
+                onClick={handleHomeClick}
                 className="text-lg hover:text-indigo-400 transition-colors"
               >
                 <span className="text-orange-500">#</span> Home
