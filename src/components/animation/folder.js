@@ -103,15 +103,16 @@ const Folder = forwardRef(({
   const paper3 = '#ffffff';
 
   const handleFolderClick = (e) => {
-    // Só alterna se o clique foi na pasta, não nos papéis
+    // Only toggle if click wasn't on papers
     if (e.target.closest('[data-paper]')) return;
-    setOpen(prev => !prev);
-    if (open) {
+    const newOpenState = !open;
+    setOpen(newOpenState);
+    if (!newOpenState) {
       setPaperOffsets(Array.from({ length: maxItems }, () => ({ x: 0, y: 0 })));
     }
-    // Notifica que o usuário interagiu com a pasta
+    // Notify parent of folder state change
     if (onInteract) {
-      onInteract();
+      onInteract(newOpenState);
     }
   };
 

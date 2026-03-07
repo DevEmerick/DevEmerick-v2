@@ -16,7 +16,27 @@ function App() {
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
   const timeoutRef = useRef(null);
+
+  // Monitor window resize for responsive folder sizing
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Calculate folder size proportionally based on viewport width
+  const getFolderSize = () => {
+    if (windowWidth < 360) return 0.65;      // Mobile XS
+    if (windowWidth < 480) return 0.75;      // Mobile SM
+    if (windowWidth < 640) return 0.85;      // Mobile MD
+    if (windowWidth < 768) return 0.9;       // Mobile LG
+    if (windowWidth < 1024) return 0.95;     // Tablet
+    return 1;                                // Desktop+
+  };
 
   const handleHomeClick = (e) => {
     e.preventDefault();
@@ -53,10 +73,18 @@ function App() {
     }
   };
 
-  // Função para chamar quando o usuário interage com a pasta
-  const handleFolderInteract = () => {
+  // Handle folder state changes and auto-close timer
+  const handleFolderInteract = (isOpen) => {
+    setIsFolderOpen(isOpen);
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
+    }
+    // Reset auto-close timer if folder is opened
+    if (isOpen) {
+      timeoutRef.current = setTimeout(() => {
+        folderRef.current?.close();
+        setIsFolderOpen(false);
+      }, 5000);
     }
   };
 
@@ -246,7 +274,7 @@ function App() {
           />
           {/* Coluna 1: Apresentação */}
           <div className="presentation text-center laptop:text-left order-2 laptop:order-1 relative z-10 laptop:translate-y-56 w-[calc(100%+15px)]">
-            <h1 className="text-2xl mobile:text-3xl mobile-lg:text-4xl tablet:text-5xl laptop:text-6xl font-bold leading-tight">
+            <h1 className="text-2xl mobile:text-3xl mobile-lg:text-4xl tablet:text-5xl laptop:text-6xl font-bold leading-tight" style={{ opacity: isFolderOpen ? 0.4 : 1, transition: 'opacity 0.3s ease' }}>
               {t('hero.greeting')} <br />
               {t('hero.name')}{" "}
               <span className="text-white animate-blink ml-1 inline-block transform scale-x-75 scale-y-90">
@@ -258,7 +286,7 @@ function App() {
               <div className="flex items-center justify-center laptop:justify-start gap-4 mobile:gap-6">
                 <Folder
                   ref={folderRef}
-                  size={1}
+                  size={getFolderSize()}
                   color="#5227FF"
                   label={<FontAwesomeIcon icon={faHandPointer} className="click-me-icon" />}
                   className="custom-folder"
