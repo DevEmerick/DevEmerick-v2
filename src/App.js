@@ -318,7 +318,7 @@ function App() {
             <img
               src="/projects/img/avatar.png"
               alt="Avatar de Emerick"
-              className="w-full max-w-[160px] mobile:max-w-[200px] mobile-lg:max-w-[240px] tablet:max-w-[280px] laptop:max-w-[450px] h-auto object-contain"
+              className="w-full max-w-[136px] mobile:max-w-[170px] mobile-lg:max-w-[204px] tablet:max-w-[238px] laptop:max-w-[450px] h-auto object-contain"
             />
           </div>
 
