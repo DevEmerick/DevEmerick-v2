@@ -1,0 +1,36 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "projects": "Proyectos",
+    "contacts": "Contactos"
+  },
+  "hero": {
+    "greeting": "Hola,",
+    "name": "Soy Emerick",
+    "description": "Soy un desarrollador enfocado en desarrollo Front-End y Full Stack, apasionado por transformar ideas en aplicaciones reales y funcionales. Tengo experiencia con React, Next.js, TypeScript, Sass y CSS."
+  },
+  "github": {
+    "label": "GitHub"
+  },
+  "linkedin": {
+    "label": "LinkedIn"
+  },
+  "contacts_modal": {
+    "title": "Ponte en Contacto",
+    "subtitle": "Comunicate conmigo y construyamos algo increíble juntos",
+    "email_label": "Correo",
+    "linkedin_label": "LinkedIn",
+    "github_label": "GitHub",
+    "form": {
+      "name_label": "Nombre Completo",
+      "name_placeholder": "Juan Pérez",
+      "email_label": "Tu Correo",
+      "email_placeholder": "juan@ejemplo.com",
+      "subject_label": "Asunto",
+      "subject_placeholder": "Consulta de Proyecto",
+      "message_label": "Mensaje",
+      "message_placeholder": "Cuéntame sobre tu proyecto, objetivos, o cómo podemos trabajar juntos...",
+      "submit": "Enviar Mensaje"
+    }
+  }
+}

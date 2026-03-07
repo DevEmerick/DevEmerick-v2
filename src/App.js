@@ -3,14 +3,17 @@ import Folder from "./components/animation/folder.js";
 import MiniProjectCard from "./components/MiniProjectCard.js";
 import MiniLinkCard from "./components/MiniLinkCard.js";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import { faHandPointer, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faHandPointer, faEnvelope, faGlobe } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRef, useState, useEffect } from "react";
+import { useTranslation } from 'react-i18next';
 
 function App() {
+  const { t, i18n } = useTranslation();
   const folderRef = useRef(null);
   const [isFolderOpen, setIsFolderOpen] = useState(false);
   const [isContactsOpen, setIsContactsOpen] = useState(false);
+  const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const timeoutRef = useRef(null);
 
@@ -82,22 +85,65 @@ function App() {
                 onClick={handleHomeClick}
                 className="text-lg hover:text-indigo-400 transition-colors"
               >
-                <span className="text-orange-500">#</span> Home
+                <span className="text-orange-500">#</span> {t('nav.home')}
               </a>
               <a
                 href="#projects"
                 onClick={handleProjectsClick}
                 className="text-lg hover:text-indigo-400 transition-colors"
               >
-                <span className="text-orange-500">#</span> Projects
+                <span className="text-orange-500">#</span> {t('nav.projects')}
               </a>
               <a
                 href="#contact"
                 onClick={handleContactsClick}
                 className="text-lg hover:text-indigo-400 transition-colors"
               >
-                <span className="text-orange-500">#</span> Contacts
+                <span className="text-orange-500">#</span> {t('nav.contacts')}
               </a>
+
+              {/* Language Selector */}
+              <div className="relative">
+                <button
+                  onClick={() => setIsLanguageOpen(!isLanguageOpen)}
+                  className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-700/50 hover:bg-slate-700 transition-colors duration-200"
+                >
+                  <FontAwesomeIcon icon={faGlobe} className="text-orange-400" />
+                  <span className="text-sm font-semibold uppercase">{i18n.language}</span>
+                </button>
+                
+                {isLanguageOpen && (
+                  <div className="absolute right-0 mt-2 w-32 bg-slate-800 rounded-lg shadow-lg border border-slate-700 z-50 overflow-hidden animate-fadeIn">
+                    <button
+                      onClick={() => {
+                        i18n.changeLanguage('pt');
+                        setIsLanguageOpen(false);
+                      }}
+                      className={`w-full px-4 py-3 text-sm text-left hover:bg-slate-700 transition-colors ${ i18n.language === 'pt' ? 'bg-orange-500/20 text-orange-400' : 'text-white'}`}
+                    >
+                      Português
+                    </button>
+                    <button
+                      onClick={() => {
+                        i18n.changeLanguage('en');
+                        setIsLanguageOpen(false);
+                      }}
+                      className={`w-full px-4 py-3 text-sm text-left hover:bg-slate-700 transition-colors ${ i18n.language === 'en' ? 'bg-orange-500/20 text-orange-400' : 'text-white'}`}
+                    >
+                      English
+                    </button>
+                    <button
+                      onClick={() => {
+                        i18n.changeLanguage('es');
+                        setIsLanguageOpen(false);
+                      }}
+                      className={`w-full px-4 py-3 text-sm text-left hover:bg-slate-700 transition-colors ${ i18n.language === 'es' ? 'bg-orange-500/20 text-orange-400' : 'text-white'}`}
+                    >
+                      Español
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -112,8 +158,8 @@ function App() {
           {/* Coluna 1: Apresentação */}
           <div className="presentation text-center lg:text-left order-2 lg:order-1 relative z-10 lg:translate-y-56 w-[calc(100%+15px)]">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
-              Hey there, <br />
-              I'm Emerick{" "}
+              {t('hero.greeting')} <br />
+              {t('hero.name')}{" "}
               <span className="text-white animate-blink ml-1 inline-block transform scale-x-75 scale-y-90">
                 {" "}
                 |
@@ -165,10 +211,7 @@ function App() {
               className="aboutme text-[rgb(207,207,207)] font-mono font-extrabold leading-[28px] text-center lg:text-left 
             text-lg max-w-xs sm:max-w-sm lg:max-w-md mx-auto lg:mx-0 drop-shadow-md"
             >
-              I am a developer focused on Front-End and Full Stack development,
-              passionate about transforming ideas into real and functional
-              applications. I have experience with React, Next.js, TypeScript,
-              Sass, and CSS.
+              {t('hero.description')}
             </p>
           </div>
         </main>
@@ -201,8 +244,8 @@ function App() {
 
             {/* Header */}
             <div className="mb-8">
-              <h2 className="text-4xl font-bold text-white mb-2">Get in Touch</h2>
-              <p className="text-slate-400">Reach out and let's build something amazing together</p>
+              <h2 className="text-4xl font-bold text-white mb-2">{t('contacts_modal.title')}</h2>
+              <p className="text-slate-400">{t('contacts_modal.subtitle')}</p>
             </div>
 
             {/* Grid Content */}
@@ -219,7 +262,7 @@ function App() {
                     <FontAwesomeIcon icon={faEnvelope} className="text-orange-400 text-lg" />
                   </div>
                   <div className="text-center">
-                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">Email</p>
+                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">{t('contacts_modal.email_label')}</p>
                     <p className="text-white font-semibold group-hover:text-orange-400 transition-colors duration-200">emerick.perth@gmail.com</p>
                   </div>
                 </a>
@@ -235,7 +278,7 @@ function App() {
                     <FontAwesomeIcon icon={faLinkedin} className="text-blue-400 text-lg" />
                   </div>
                   <div className="text-center">
-                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">LinkedIn</p>
+                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">{t('contacts_modal.linkedin_label')}</p>
                     <p className="text-white font-semibold group-hover:text-blue-400 transition-colors duration-200">Guilherme Emerick</p>
                   </div>
                 </a>
@@ -251,7 +294,7 @@ function App() {
                     <FontAwesomeIcon icon={faGithub} className="text-gray-300 text-lg" />
                   </div>
                   <div className="text-center">
-                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">GitHub</p>
+                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">{t('contacts_modal.github_label')}</p>
                     <p className="text-white font-semibold group-hover:text-gray-300 transition-colors duration-200">DevEmerick</p>
                   </div>
                 </a>
@@ -271,13 +314,13 @@ function App() {
                 {/* Name Input */}
                 <div>
                   <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">
-                    Full Name
+                    {t('contacts_modal.form.name_label')}
                   </label>
                   <input
                     type="text"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="John Doe"
+                    placeholder={t('contacts_modal.form.name_placeholder')}
                     required
                     className="w-full px-4 py-3 rounded-lg bg-slate-700/50 border border-slate-600/50 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-200"
                   />
@@ -286,13 +329,13 @@ function App() {
                 {/* Email Input */}
                 <div>
                   <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">
-                    Your Email
+                    {t('contacts_modal.form.email_label')}
                   </label>
                   <input
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="john@example.com"
+                    placeholder={t('contacts_modal.form.email_placeholder')}
                     required
                     className="w-full px-4 py-3 rounded-lg bg-slate-700/50 border border-slate-600/50 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-200"
                   />
@@ -301,13 +344,13 @@ function App() {
                 {/* Subject Input */}
                 <div>
                   <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">
-                    Subject
+                    {t('contacts_modal.form.subject_label')}
                   </label>
                   <input
                     type="text"
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    placeholder="Project Inquiry"
+                    placeholder={t('contacts_modal.form.subject_placeholder')}
                     required
                     className="w-full px-4 py-3 rounded-lg bg-slate-700/50 border border-slate-600/50 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-200"
                   />
@@ -316,12 +359,12 @@ function App() {
                 {/* Message Textarea */}
                 <div>
                   <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">
-                    Message
+                    {t('contacts_modal.form.message_label')}
                   </label>
                   <textarea
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Tell me about your project, goals, or how we can work together..."
+                    placeholder={t('contacts_modal.form.message_placeholder')}
                     required
                     rows={4}
                     className="w-full px-4 py-3 rounded-lg bg-slate-700/50 border border-slate-600/50 text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-200 resize-none"
@@ -333,7 +376,7 @@ function App() {
                   type="submit"
                   className="w-full bg-gradient-to-r from-orange-500 via-orange-500 to-orange-600 hover:from-orange-600 hover:via-orange-600 hover:to-orange-700 text-white font-bold py-3.5 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-orange-500/25 active:scale-95"
                 >
-                  Send Message
+                  {t('contacts_modal.form.submit')}
                 </button>
               </form>
 
