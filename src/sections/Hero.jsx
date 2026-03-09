@@ -21,7 +21,7 @@ function Hero({ folderRef, isFolderOpen, getFolderSize, onFolderInteract }) {
   const { t } = useTranslation();
 
   return (
-    <main className="content container mx-auto flex-grow flex flex-col gap-6 mobile:gap-6 tablet:gap-8 laptop:gap-10 desktop:gap-20 laptop:grid laptop:grid-cols-[1fr_auto_1fr] items-center justify-center px-4 mobile:px-6 laptop:px-10 desktop-lg:px-[100px] relative overflow-hidden pt-16 mobile:pt-20 tablet:pt-24 laptop:pt-0">
+    <main className="content container mx-auto flex-grow flex flex-col gap-6 mobile:gap-6 tablet:gap-8 laptop:gap-10 desktop:gap-20 laptop:grid laptop:grid-cols-[1fr_auto_1fr] items-center laptop:items-end justify-between px-4 mobile:px-6 laptop:px-10 desktop-lg:px-[100px] relative overflow-hidden pt-16 mobile:pt-20 tablet:pt-24 laptop:pt-0 pb-[60px]">
       {/* Marca d'água de fundo */}
       <img
         src="/projects/img/developer.png"
@@ -31,7 +31,7 @@ function Hero({ folderRef, isFolderOpen, getFolderSize, onFolderInteract }) {
 
       {/* Coluna 1 – Apresentação */}
       <div
-        className="presentation text-center laptop:text-left order-2 laptop:order-1 relative z-10 laptop:translate-y-56 w-[calc(100%+15px)]"
+        className="presentation text-center laptop:text-left order-2 laptop:order-1 relative z-10 laptop:self-end w-[calc(100%+15px)]"
       >
         <h1
           className="text-2xl mobile:text-3xl mobile-lg:text-4xl tablet:text-5xl laptop:text-6xl font-bold leading-tight"
@@ -74,7 +74,7 @@ function Hero({ folderRef, isFolderOpen, getFolderSize, onFolderInteract }) {
       </div>
 
       {/* Coluna 2 – Avatar */}
-      <div className="avatar order-1 laptop:order-2 relative z-10 flex flex-col items-center justify-center laptop:translate-y-20">
+      <div className="avatar order-1 laptop:order-2 relative z-10 flex flex-col items-center justify-center laptop:self-end">
         <img
           src="/projects/img/avatar.png"
           alt="Avatar de Emerick"
@@ -83,7 +83,7 @@ function Hero({ folderRef, isFolderOpen, getFolderSize, onFolderInteract }) {
       </div>
 
       {/* Coluna 3 – About me */}
-      <div className="order-3 relative z-10 laptop:self-end laptop:mb-12">
+      <div className="order-3 relative z-10 laptop:self-end">
         <p className="aboutme text-[rgb(207,207,207)] font-mono font-extrabold leading-[20px] mobile:leading-[24px] laptop:leading-[28px] text-center laptop:text-left text-xs mobile:text-sm laptop:text-lg max-w-xs mobile:max-w-sm laptop:max-w-md mx-auto laptop:mx-0 drop-shadow-md">
           {t('hero.description')}
         </p>
