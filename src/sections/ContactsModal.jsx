@@ -53,8 +53,6 @@ function ContactsModal({ isOpen, onClose }) {
   const { t } = useTranslation();
   const [formData, setFormData] = useState(INITIAL_FORM);
 
-  if (!isOpen) return null;
-
   const handleField = useCallback((field) => (e) => {
     setFormData((prev) => ({ ...prev, [field]: e.target.value }));
   }, []);
@@ -65,6 +63,8 @@ function ContactsModal({ isOpen, onClose }) {
     window.location.href = `mailto:${SOCIAL_LINKS.email}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(body)}`;
     setFormData(INITIAL_FORM);
   };
+
+  if (!isOpen) return null;
 
   return (
     <div
