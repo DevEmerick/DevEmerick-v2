@@ -1,5 +1,34 @@
+<<<<<<< HEAD
 .App {
   text-align: center;
+=======
+@keyframes clickMePulse {
+  0%, 100% {
+    transform: scale(1) rotate(0deg) translateY(0);
+    opacity: 1;
+  }
+  20% {
+    transform: scale(1.15) rotate(-8deg) translateY(-2px);
+    opacity: 0.9;
+  }
+  40% {
+    transform: scale(1) rotate(6deg) translateY(0);
+    opacity: 1;
+  }
+  60% {
+    transform: scale(1.1) rotate(-4deg) translateY(-1px);
+    opacity: 0.85;
+  }
+  80% {
+    transform: scale(1) rotate(2deg) translateY(0);
+    opacity: 1;
+  }
+}
+
+.click-me-icon {
+  animation: clickMePulse 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
+>>>>>>> 3d2cefe (chore: remove unused code, dead CSS, and unneeded dependencies)
 }
 
 @keyframes fadeIn {
