@@ -1,4 +1,4 @@
-import { cx, TRANSITIONS, ROUNDED, BACKGROUNDS, BORDERS, TEXT_COLORS } from '../../constants/theme';
+import { cx, TRANSITIONS, ROUNDED, BACKGROUNDS, BORDERS, TEXT_COLORS } from '../../constants/theme.js';
 
 /**
  * FormField - Componente reutilizável de campo de formulário

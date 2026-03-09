@@ -1,4 +1,4 @@
-import { cx, TRANSITIONS, ROUNDED, BACKGROUNDS, HOVER_EFFECTS } from '../../constants/theme';
+import { cx, TRANSITIONS, ROUNDED, BACKGROUNDS, HOVER_EFFECTS } from '../../constants/theme.js';
 
 /**
  * Button - Componente reutilizável de botão

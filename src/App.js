@@ -3,13 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
 
-import Navbar from './sections/Navbar';
-import Hero from './sections/Hero';
-import ContactsModal from './sections/ContactsModal';
-import { useWindowWidth } from './hooks/useWindowWidth';
-import { useFolderTimer } from './hooks/useFolderTimer';
-import { useToggle } from './hooks/useToggle';
-import { reloadPage } from './utils/navigation';
+import Navbar from './sections/Navbar.jsx';
+import Hero from './sections/Hero.jsx';
+import ContactsModal from './sections/ContactsModal.jsx';
+import { useWindowWidth } from './hooks/useWindowWidth.js';
+import { useFolderTimer } from './hooks/useFolderTimer.js';
+import { useToggle } from './hooks/useToggle.js';
+import { reloadPage } from './utils/navigation.js';
 
 function App() {
   const { t } = useTranslation();

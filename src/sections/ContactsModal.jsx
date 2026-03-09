@@ -3,9 +3,9 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useTranslation } from 'react-i18next';
-import { SOCIAL_LINKS } from '../constants/links';
-import Button from '../components/ui/Button';
-import FormField from '../components/ui/FormField';
+import { SOCIAL_LINKS } from '../constants/links.js';
+import Button from '../components/ui/Button.js';
+import FormField from '../components/ui/FormField.js';
 
 const INITIAL_FORM = { name: '', email: '', subject: '', message: '' };
 
