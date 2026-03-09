@@ -1,8 +1,11 @@
 import './App.css';
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import { useState } from 'react';
 >>>>>>> e5c35a7 (refactor: extract Navbar, Hero, ContactsModal sections and shared hooks/constants from App.js)
+=======
+>>>>>>> f242ae4 (refactor: implement DRY principles and create reusable components)
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
@@ -28,15 +31,22 @@ import Hero from './sections/Hero';
 import ContactsModal from './sections/ContactsModal';
 import { useWindowWidth } from './hooks/useWindowWidth';
 import { useFolderTimer } from './hooks/useFolderTimer';
+import { useToggle } from './hooks/useToggle';
+import { reloadPage } from './utils/navigation';
 
 function App() {
   const { t } = useTranslation();
+<<<<<<< HEAD
   const [isContactsOpen, setIsContactsOpen] = useState(false);
 >>>>>>> e5c35a7 (refactor: extract Navbar, Hero, ContactsModal sections and shared hooks/constants from App.js)
+=======
+  const [isContactsOpen, toggleContacts] = useToggle(false);
+>>>>>>> f242ae4 (refactor: implement DRY principles and create reusable components)
 
   const { getFolderSize } = useWindowWidth();
   const { folderRef, isFolderOpen, handleProjectsClick, handleFolderInteract } = useFolderTimer();
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   const handleHomeClick = (e) => reloadPage(e);
 
@@ -53,6 +63,13 @@ function App() {
     e.preventDefault();
     setIsContactsOpen((prev) => !prev);
 >>>>>>> e5c35a7 (refactor: extract Navbar, Hero, ContactsModal sections and shared hooks/constants from App.js)
+=======
+  const handleHomeClick = (e) => reloadPage(e);
+
+  const handleContactsClick = (e) => {
+    e.preventDefault();
+    toggleContacts();
+>>>>>>> f242ae4 (refactor: implement DRY principles and create reusable components)
   };
 
   return (
@@ -72,10 +89,14 @@ function App() {
       </div>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       <ContactsModal isOpen={isContactsOpen} onClose={toggleContacts} />
 =======
       <ContactsModal isOpen={isContactsOpen} onClose={() => setIsContactsOpen(false)} />
 >>>>>>> e5c35a7 (refactor: extract Navbar, Hero, ContactsModal sections and shared hooks/constants from App.js)
+=======
+      <ContactsModal isOpen={isContactsOpen} onClose={toggleContacts} />
+>>>>>>> f242ae4 (refactor: implement DRY principles and create reusable components)
 
       <footer className="w-full bg-gray-900" />
 

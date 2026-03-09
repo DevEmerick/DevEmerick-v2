@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { cx, TRANSITIONS, ROUNDED, BACKGROUNDS, HOVER_EFFECTS } from '../../constants/theme.js';
+=======
+import { cx, TRANSITIONS, ROUNDED, BACKGROUNDS, HOVER_EFFECTS } from '../../constants/theme.js';
+>>>>>>> f242ae4 (refactor: implement DRY principles and create reusable components)
 
 /**
  * Button - Componente reutilizável de botão
