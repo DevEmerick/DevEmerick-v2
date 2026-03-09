@@ -2,7 +2,8 @@
   "nav": {
     "home": "Home",
     "projects": "Projetos",
-    "contacts": "Contatos"
+    "contacts": "Contatos",
+    "language": "Idioma"
   },
   "hero": {
     "greeting": "Oi, tudo bem,",
@@ -16,21 +17,21 @@
     "label": "LinkedIn"
   },
   "contacts_modal": {
-    "title": "Get in Touch",
-    "subtitle": "Reach out and let's build something amazing together",
-    "email_label": "Email",
+    "title": "Entre em Contato",
+    "subtitle": "Fale comigo e vamos construir algo incrível juntos",
+    "email_label": "E-mail",
     "linkedin_label": "LinkedIn",
     "github_label": "GitHub",
     "form": {
-      "name_label": "Full Name",
-      "name_placeholder": "John Doe",
-      "email_label": "Your Email",
-      "email_placeholder": "john@example.com",
-      "subject_label": "Subject",
-      "subject_placeholder": "Project Inquiry",
-      "message_label": "Message",
-      "message_placeholder": "Tell me about your project, goals, or how we can work together...",
-      "submit": "Send Message"
+      "name_label": "Nome Completo",
+      "name_placeholder": "João Silva",
+      "email_label": "Seu E-mail",
+      "email_placeholder": "joao@exemplo.com",
+      "subject_label": "Assunto",
+      "subject_placeholder": "Consulta de Projeto",
+      "message_label": "Mensagem",
+      "message_placeholder": "Me conte sobre seu projeto, objetivos ou como podemos trabalhar juntos...",
+      "submit": "Enviar Mensagem"
     }
   }
 }

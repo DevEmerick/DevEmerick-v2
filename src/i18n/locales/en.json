@@ -2,7 +2,8 @@
   "nav": {
     "home": "Home",
     "projects": "Projects",
-    "contacts": "Contacts"
+    "contacts": "Contacts",
+    "language": "Language"
   },
   "hero": {
     "greeting": "Hey there,",
