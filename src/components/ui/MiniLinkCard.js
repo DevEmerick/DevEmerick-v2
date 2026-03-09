@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { openInNewTab } from '../../utils/navigation';
+import { openInNewTab } from '../../utils/navigation.js';
 
 /**
  * MiniLinkCard – mini card com ícone + label para links sociais.

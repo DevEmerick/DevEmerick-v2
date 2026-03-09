@@ -1,4 +1,4 @@
-import { openInNewTab } from '../../utils/navigation';
+import { openInNewTab } from '../../utils/navigation.js';
 
 /**
  * MiniProjectCard – miniatura de um card de projeto.

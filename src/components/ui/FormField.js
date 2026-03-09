@@ -1,8 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { cx, TRANSITIONS, ROUNDED, BACKGROUNDS, BORDERS, TEXT_COLORS } from '../../constants/theme.js';
 =======
 import { cx, TRANSITIONS, ROUNDED, BACKGROUNDS, BORDERS, TEXT_COLORS } from '../../constants/theme.js';
 >>>>>>> f242ae4 (refactor: implement DRY principles and create reusable components)
+=======
+import { cx, TRANSITIONS, ROUNDED, BACKGROUNDS, BORDERS, TEXT_COLORS } from '../../constants/theme.js';
+>>>>>>> 2e2914c (fix: add .js/.jsx extensions to ALL local imports for Vercel ES modules compatibility)
 
 /**
  * FormField - Componente reutilizável de campo de formulário

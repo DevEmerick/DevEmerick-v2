@@ -1,7 +1,7 @@
 import { faGlobe, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useTranslation } from 'react-i18next';
-import { useToggle } from '../hooks/useToggle';
+import { useToggle } from '../hooks/useToggle.js';
 
 const LANGUAGES = [
   { code: 'pt', label: 'Português', short: 'PT' },

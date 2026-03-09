@@ -11,7 +11,10 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2e2914c (fix: add .js/.jsx extensions to ALL local imports for Vercel ES modules compatibility)
 import Navbar from './sections/Navbar.jsx';
 import Hero from './sections/Hero.jsx';
 import ContactsModal from './sections/ContactsModal.jsx';
@@ -19,6 +22,7 @@ import { useWindowWidth } from './hooks/useWindowWidth.js';
 import { useFolderTimer } from './hooks/useFolderTimer.js';
 import { useToggle } from './hooks/useToggle.js';
 import { reloadPage } from './utils/navigation.js';
+<<<<<<< HEAD
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Analytics } from '@vercel/analytics/react';
 
@@ -33,6 +37,8 @@ import { useWindowWidth } from './hooks/useWindowWidth';
 import { useFolderTimer } from './hooks/useFolderTimer';
 import { useToggle } from './hooks/useToggle';
 import { reloadPage } from './utils/navigation';
+=======
+>>>>>>> 2e2914c (fix: add .js/.jsx extensions to ALL local imports for Vercel ES modules compatibility)
 
 function App() {
   const { t } = useTranslation();
