@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 .App {
   text-align: center;
 =======
@@ -29,6 +30,10 @@
   animation: clickMePulse 2s ease-in-out infinite;
   filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
 >>>>>>> 3d2cefe (chore: remove unused code, dead CSS, and unneeded dependencies)
+=======
+.App {
+  text-align: center;
+>>>>>>> 4b28c33 (chore: remove unused code (reportWebVitals and CSS animations))
 }
 
 @keyframes fadeIn {
