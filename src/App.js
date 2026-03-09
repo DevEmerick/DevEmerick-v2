@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
 
+
 import Navbar from './sections/Navbar.jsx';
 import Hero from './sections/Hero.jsx';
 import ContactsModal from './sections/ContactsModal.jsx';
@@ -10,6 +11,7 @@ import { useWindowWidth } from './hooks/useWindowWidth.js';
 import { useFolderTimer } from './hooks/useFolderTimer.js';
 import { useToggle } from './hooks/useToggle.js';
 import { reloadPage } from './utils/navigation.js';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 function App() {
   const { t } = useTranslation();
@@ -54,6 +56,7 @@ function App() {
       >
         <FontAwesomeIcon icon={faEnvelope} />
       </button>
+      <SpeedInsights />
     </div>
   );
 }
