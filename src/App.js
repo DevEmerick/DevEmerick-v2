@@ -1,8 +1,13 @@
 import './App.css';
+<<<<<<< HEAD
+=======
+import { useState } from 'react';
+>>>>>>> e5c35a7 (refactor: extract Navbar, Hero, ContactsModal sections and shared hooks/constants from App.js)
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
 
+<<<<<<< HEAD
 
 import Navbar from './sections/Navbar.jsx';
 import Hero from './sections/Hero.jsx';
@@ -17,15 +22,37 @@ import { Analytics } from '@vercel/analytics/react';
 function App() {
   const { t } = useTranslation();
   const [isContactsOpen, toggleContacts] = useToggle(false);
+=======
+import Navbar from './sections/Navbar';
+import Hero from './sections/Hero';
+import ContactsModal from './sections/ContactsModal';
+import { useWindowWidth } from './hooks/useWindowWidth';
+import { useFolderTimer } from './hooks/useFolderTimer';
+
+function App() {
+  const { t } = useTranslation();
+  const [isContactsOpen, setIsContactsOpen] = useState(false);
+>>>>>>> e5c35a7 (refactor: extract Navbar, Hero, ContactsModal sections and shared hooks/constants from App.js)
 
   const { getFolderSize } = useWindowWidth();
   const { folderRef, isFolderOpen, handleProjectsClick, handleFolderInteract } = useFolderTimer();
 
+<<<<<<< HEAD
   const handleHomeClick = (e) => reloadPage(e);
 
   const handleContactsClick = (e) => {
     e.preventDefault();
     toggleContacts();
+=======
+  const handleHomeClick = (e) => {
+    e.preventDefault();
+    window.location.href = window.location.pathname;
+  };
+
+  const handleContactsClick = (e) => {
+    e.preventDefault();
+    setIsContactsOpen((prev) => !prev);
+>>>>>>> e5c35a7 (refactor: extract Navbar, Hero, ContactsModal sections and shared hooks/constants from App.js)
   };
 
   return (
@@ -44,7 +71,11 @@ function App() {
         />
       </div>
 
+<<<<<<< HEAD
       <ContactsModal isOpen={isContactsOpen} onClose={toggleContacts} />
+=======
+      <ContactsModal isOpen={isContactsOpen} onClose={() => setIsContactsOpen(false)} />
+>>>>>>> e5c35a7 (refactor: extract Navbar, Hero, ContactsModal sections and shared hooks/constants from App.js)
 
       <footer className="w-full bg-gray-900" />
 
