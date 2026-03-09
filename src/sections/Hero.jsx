@@ -3,7 +3,7 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faHandPointer } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import Folder from '../components/animation/folder.js';
+import Folder from '../components/animation/Folder';
 import MiniLinkCard from '../components/ui/MiniLinkCard.js';
 import MiniProjectCard from '../components/ui/MiniProjectCard.js';
 import { SOCIAL_LINKS } from '../constants/links.js';
