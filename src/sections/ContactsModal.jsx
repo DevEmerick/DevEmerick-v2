@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useTranslation } from 'react-i18next';
 import { SOCIAL_LINKS } from '../constants/links';
+import Button from '../components/ui/Button';
+import FormField from '../components/ui/FormField';
 
 const INITIAL_FORM = { name: '', email: '', subject: '', message: '' };
 
@@ -53,8 +55,9 @@ function ContactsModal({ isOpen, onClose }) {
 
   if (!isOpen) return null;
 
-  const handleField = (field) => (e) =>
+  const handleField = useCallback((field) => (e) => {
     setFormData((prev) => ({ ...prev, [field]: e.target.value }));
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -62,12 +65,6 @@ function ContactsModal({ isOpen, onClose }) {
     window.location.href = `mailto:${SOCIAL_LINKS.email}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(body)}`;
     setFormData(INITIAL_FORM);
   };
-
-  const inputClass =
-    'w-full px-2.5 mobile:px-3 py-1.5 mobile:py-2 rounded-lg bg-slate-700/50 border border-slate-600/50 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500/20 transition-all duration-200';
-
-  const labelClass =
-    'block text-xs font-semibold text-slate-400 uppercase tracking-wide mb-0.5';
 
   return (
     <div
@@ -128,64 +125,54 @@ function ContactsModal({ isOpen, onClose }) {
 
           {/* Formulário de contato */}
           <form onSubmit={handleSubmit} className="space-y-1.5 mobile:space-y-2">
-            <div>
-              <label className={labelClass}>{t('contacts_modal.form.name_label')}</label>
-              <input
-                type="text"
-                value={formData.name}
-                onChange={handleField('name')}
-                placeholder={t('contacts_modal.form.name_placeholder')}
-                required
-                maxLength={100}
-                className={inputClass}
-              />
-            </div>
+            <FormField
+              label={t('contacts_modal.form.name_label')}
+              name="name"
+              type="text"
+              value={formData.name}
+              onChange={handleField('name')}
+              placeholder={t('contacts_modal.form.name_placeholder')}
+              required
+              maxLength={100}
+            />
 
-            <div>
-              <label className={labelClass}>{t('contacts_modal.form.email_label')}</label>
-              <input
-                type="email"
-                value={formData.email}
-                onChange={handleField('email')}
-                placeholder={t('contacts_modal.form.email_placeholder')}
-                required
-                maxLength={254}
-                className={inputClass}
-              />
-            </div>
+            <FormField
+              label={t('contacts_modal.form.email_label')}
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleField('email')}
+              placeholder={t('contacts_modal.form.email_placeholder')}
+              required
+              maxLength={254}
+            />
 
-            <div>
-              <label className={labelClass}>{t('contacts_modal.form.subject_label')}</label>
-              <input
-                type="text"
-                value={formData.subject}
-                onChange={handleField('subject')}
-                placeholder={t('contacts_modal.form.subject_placeholder')}
-                required
-                maxLength={200}
-                className={inputClass}
-              />
-            </div>
+            <FormField
+              label={t('contacts_modal.form.subject_label')}
+              name="subject"
+              type="text"
+              value={formData.subject}
+              onChange={handleField('subject')}
+              placeholder={t('contacts_modal.form.subject_placeholder')}
+              required
+              maxLength={200}
+            />
 
-            <div>
-              <label className={labelClass}>{t('contacts_modal.form.message_label')}</label>
-              <textarea
-                value={formData.message}
-                onChange={handleField('message')}
-                placeholder={t('contacts_modal.form.message_placeholder')}
-                required
-                maxLength={2000}
-                rows={2}
-                className={`${inputClass} resize-none`}
-              />
-            </div>
+            <FormField
+              label={t('contacts_modal.form.message_label')}
+              name="message"
+              value={formData.message}
+              onChange={handleField('message')}
+              placeholder={t('contacts_modal.form.message_placeholder')}
+              required
+              maxLength={2000}
+              multiline
+              rows={2}
+            />
 
-            <button
-              type="submit"
-              className="w-full bg-gradient-to-r from-orange-500 via-orange-500 to-orange-600 hover:from-orange-600 hover:via-orange-600 hover:to-orange-700 text-white font-bold py-1.5 mobile:py-2 px-3 mobile:px-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-orange-500/25 active:scale-95 text-xs mobile:text-sm"
-            >
+            <Button type="submit" variant="primary" size="md" fullWidth>
               {t('contacts_modal.form.submit')}
-            </button>
+            </Button>
           </form>
         </div>
       </div>

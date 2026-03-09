@@ -1,3 +1,5 @@
+import { openInNewTab } from '../../utils/navigation';
+
 /**
  * MiniProjectCard – miniatura de um card de projeto.
  * Mesmo tamanho dos mini cards brancos da pasta.
@@ -14,12 +16,12 @@ const MiniProjectCard = ({
   gradient = 'linear-gradient(to bottom, #272a31 14%, #020618 98%)'
 }) => {
   const handleClick = (e) => {
-    e.stopPropagation();
-    e.preventDefault();
     if (onClick) {
+      e.stopPropagation();
+      e.preventDefault();
       onClick(e);
     } else if (href) {
-      window.open(href, '_blank', 'noopener,noreferrer');
+      openInNewTab(href, e);
     }
   };
 

@@ -1,7 +1,7 @@
-import { useState } from 'react';
 import { faGlobe, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useTranslation } from 'react-i18next';
+import { useToggle } from '../hooks/useToggle';
 
 const LANGUAGES = [
   { code: 'pt', label: 'Português', short: 'PT' },
@@ -19,19 +19,19 @@ const LANGUAGES = [
  */
 function Navbar({ onHomeClick, onContactsClick, onProjectsClick }) {
   const { t, i18n } = useTranslation();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const [isMenuOpen, toggleMenu] = useToggle(false);
+  const [isLanguageOpen, toggleLanguage] = useToggle(false);
 
   const changeLanguage = (code) => {
     i18n.changeLanguage(code);
-    setIsLanguageOpen(false);
-    setIsMenuOpen(false);
+    toggleLanguage();
+    toggleMenu();
   };
 
   const navLinks = [
-    { href: '#home',     label: t('nav.home'),     onClick: (e) => { onHomeClick(e); setIsMenuOpen(false); } },
-    { href: '#projects', label: t('nav.projects'), onClick: (e) => { onProjectsClick(e); setIsMenuOpen(false); } },
-    { href: '#contact',  label: t('nav.contacts'), onClick: (e) => { onContactsClick(e); setIsMenuOpen(false); } },
+    { href: '#home',     label: t('nav.home'),     onClick: (e) => { onHomeClick(e); toggleMenu(); } },
+    { href: '#projects', label: t('nav.projects'), onClick: (e) => { onProjectsClick(e); toggleMenu(); } },
+    { href: '#contact',  label: t('nav.contacts'), onClick: (e) => { onContactsClick(e); toggleMenu(); } },
   ];
 
   return (
@@ -61,7 +61,7 @@ function Navbar({ onHomeClick, onContactsClick, onProjectsClick }) {
           {/* Seletor de idioma – Desktop */}
           <div className="relative">
             <button
-              onClick={() => setIsLanguageOpen((prev) => !prev)}
+              onClick={toggleLanguage}
               className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-700/50 hover:bg-slate-700 transition-colors duration-200"
             >
               <FontAwesomeIcon icon={faGlobe} className="text-orange-400" />
@@ -88,7 +88,7 @@ function Navbar({ onHomeClick, onContactsClick, onProjectsClick }) {
 
         {/* Botão hambúrguer – Mobile/Tablet */}
         <button
-          onClick={() => setIsMenuOpen((prev) => !prev)}
+          onClick={toggleMenu}
           className="laptop:hidden text-orange-500 text-2xl hover:text-orange-400 transition-colors duration-200"
           aria-label="Menu"
         >

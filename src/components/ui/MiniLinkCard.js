@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { openInNewTab } from '../../utils/navigation';
 
 /**
  * MiniLinkCard – mini card com ícone + label para links sociais.
@@ -18,10 +19,7 @@ const MiniLinkCard = ({
   bgColor = '#24292e',
   iconColor = '#ffffff'
 }) => {
-  const handleClick = (e) => {
-    e.stopPropagation();
-    window.open(href, '_blank', 'noopener,noreferrer');
-  };
+  const handleClick = (e) => openInNewTab(href, e);
 
   return (
     <div

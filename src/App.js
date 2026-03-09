@@ -1,5 +1,4 @@
 import './App.css';
-import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
@@ -9,22 +8,21 @@ import Hero from './sections/Hero';
 import ContactsModal from './sections/ContactsModal';
 import { useWindowWidth } from './hooks/useWindowWidth';
 import { useFolderTimer } from './hooks/useFolderTimer';
+import { useToggle } from './hooks/useToggle';
+import { reloadPage } from './utils/navigation';
 
 function App() {
   const { t } = useTranslation();
-  const [isContactsOpen, setIsContactsOpen] = useState(false);
+  const [isContactsOpen, toggleContacts] = useToggle(false);
 
   const { getFolderSize } = useWindowWidth();
   const { folderRef, isFolderOpen, handleProjectsClick, handleFolderInteract } = useFolderTimer();
 
-  const handleHomeClick = (e) => {
-    e.preventDefault();
-    window.location.href = window.location.pathname;
-  };
+  const handleHomeClick = (e) => reloadPage(e);
 
   const handleContactsClick = (e) => {
     e.preventDefault();
-    setIsContactsOpen((prev) => !prev);
+    toggleContacts();
   };
 
   return (
@@ -43,7 +41,7 @@ function App() {
         />
       </div>
 
-      <ContactsModal isOpen={isContactsOpen} onClose={() => setIsContactsOpen(false)} />
+      <ContactsModal isOpen={isContactsOpen} onClose={toggleContacts} />
 
       <footer className="w-full bg-gray-900" />
 
