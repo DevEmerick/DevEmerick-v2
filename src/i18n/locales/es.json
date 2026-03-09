@@ -2,7 +2,8 @@
   "nav": {
     "home": "Inicio",
     "projects": "Proyectos",
-    "contacts": "Contactos"
+    "contacts": "Contactos",
+    "language": "Idioma"
   },
   "hero": {
     "greeting": "Hola,",
