@@ -30,9 +30,12 @@ import { reloadPage } from './utils/navigation.js';
 <<<<<<< HEAD
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Analytics } from '@vercel/analytics/react';
+<<<<<<< HEAD
 =======
 import { SpeedInsights } from '@vercel/speed-insights/react';
 >>>>>>> bf4d25b (feat: adiciona @vercel/speed-insights e SpeedInsights ao App.js)
+=======
+>>>>>>> 25a6a0d (feat: adiciona @vercel/analytics e Analytics ao App.js)
 
 function App() {
   const { t } = useTranslation();
@@ -125,9 +128,13 @@ function App() {
       </button>
       <SpeedInsights />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <Analytics />
 =======
 >>>>>>> bf4d25b (feat: adiciona @vercel/speed-insights e SpeedInsights ao App.js)
+=======
+      <Analytics />
+>>>>>>> 25a6a0d (feat: adiciona @vercel/analytics e Analytics ao App.js)
     </div>
   );
 }
