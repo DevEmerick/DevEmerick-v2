@@ -19,7 +19,7 @@ const MiniProjectCard = ({
     if (onClick) {
       onClick(e);
     } else if (href) {
-      window.open(href, '_blank');
+      window.open(href, '_blank', 'noopener,noreferrer');
     }
   };
 
