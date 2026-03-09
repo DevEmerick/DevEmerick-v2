@@ -12,9 +12,13 @@ import { useTranslation } from 'react-i18next';
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 2e2914c (fix: add .js/.jsx extensions to ALL local imports for Vercel ES modules compatibility)
+=======
+
+>>>>>>> bf4d25b (feat: adiciona @vercel/speed-insights e SpeedInsights ao App.js)
 import Navbar from './sections/Navbar.jsx';
 import Hero from './sections/Hero.jsx';
 import ContactsModal from './sections/ContactsModal.jsx';
@@ -23,8 +27,12 @@ import { useFolderTimer } from './hooks/useFolderTimer.js';
 import { useToggle } from './hooks/useToggle.js';
 import { reloadPage } from './utils/navigation.js';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Analytics } from '@vercel/analytics/react';
+=======
+import { SpeedInsights } from '@vercel/speed-insights/react';
+>>>>>>> bf4d25b (feat: adiciona @vercel/speed-insights e SpeedInsights ao App.js)
 
 function App() {
   const { t } = useTranslation();
@@ -116,7 +124,10 @@ function App() {
         <FontAwesomeIcon icon={faEnvelope} />
       </button>
       <SpeedInsights />
+<<<<<<< HEAD
       <Analytics />
+=======
+>>>>>>> bf4d25b (feat: adiciona @vercel/speed-insights e SpeedInsights ao App.js)
     </div>
   );
 }
