@@ -43,6 +43,11 @@ export function useFolderTimer() {
   };
 
   const handleFolderInteract = (isOpen) => {
+    // When called with no args (e.g. from paper hover), only cancel auto-close timer
+    if (isOpen === undefined) {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      return;
+    }
     const open = Boolean(isOpen);
     setIsFolderOpen(open);
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
