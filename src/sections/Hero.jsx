@@ -74,7 +74,7 @@ function Hero({ folderRef, isFolderOpen, getFolderSize, onFolderInteract }) {
       </div>
 
       {/* Coluna 2 – Avatar */}
-      <div className="avatar order-1 laptop:order-2 relative z-10 flex flex-col items-center justify-center laptop:self-end">
+      <div className="avatar order-1 laptop:order-2 relative z-10 flex flex-col items-center justify-end laptop:self-end laptop:absolute laptop:bottom-0 laptop:left-1/2 laptop:-translate-x-1/2">
         <img
           src="/projects/img/avatar.png"
           alt="Avatar de Emerick"
