@@ -47,7 +47,7 @@ function Navbar({ onHomeClick, onContactsClick, onProjectsClick }) {
 
         {/* Logo Centro – apenas desktop */}
         <div className="absolute left-1/2 -translate-x-1/2 hidden laptop:block">
-          <img src="/projects/img/logo.png" alt="Logo DevEmerick" className="h-7" />
+          <img src="/projects/img/logo.png" alt="Logo DevEmerick" className="h-6" />
         </div>
 
         {/* Links Desktop */}
