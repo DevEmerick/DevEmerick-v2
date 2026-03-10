@@ -21,7 +21,7 @@ function Hero({ folderRef, isFolderOpen, getFolderSize, onFolderInteract }) {
   const { t } = useTranslation();
 
   return (
-    <main className="content container mx-auto flex-grow flex flex-col gap-6 mobile:gap-6 tablet:gap-8 laptop:gap-10 desktop:gap-20 laptop:grid laptop:grid-cols-[1fr_auto_1fr] items-center laptop:items-end justify-between px-4 mobile:px-6 laptop:px-10 desktop-lg:px-[100px] relative overflow-hidden pt-16 mobile:pt-20 tablet:pt-24 laptop:pt-0 pb-[60px]">
+    <main className="content container mx-auto flex-grow min-h-screen flex flex-col gap-6 mobile:gap-6 tablet:gap-8 laptop:gap-10 desktop:gap-20 laptop:grid laptop:grid-cols-[1fr_auto_1fr] items-center laptop:items-end justify-between px-4 mobile:px-6 laptop:px-10 desktop-lg:px-[100px] relative overflow-hidden pt-16 mobile:pt-20 tablet:pt-24 laptop:pt-0 pb-[60px]">
       {/* Marca d'água de fundo */}
       <img
         src="/projects/img/developer.png"
@@ -74,11 +74,11 @@ function Hero({ folderRef, isFolderOpen, getFolderSize, onFolderInteract }) {
       </div>
 
       {/* Coluna 2 – Avatar */}
-      <div className="avatar order-1 laptop:order-2 relative z-10 flex flex-col items-center laptop:justify-end laptop:self-end laptop:mb-0 laptop:h-full">
+      <div className="avatar order-1 laptop:order-2 z-10 flex flex-col items-center laptop:h-full">
         <img
           src="/projects/img/avatar.png"
           alt="Avatar de Emerick"
-          className="w-full max-w-[136px] mobile:max-w-[170px] mobile-lg:max-w-[204px] tablet:max-w-[238px] laptop:max-w-[450px] h-auto object-contain"
+          className="w-full max-w-[136px] mobile:max-w-[170px] mobile-lg:max-w-[204px] tablet:max-w-[238px] laptop:max-w-[450px] h-auto object-contain laptop:mt-auto"
         />
       </div>
 
