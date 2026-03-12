@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import "./App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
@@ -12,27 +13,52 @@ import { reloadPage } from "./utils/navigation.js";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Analytics } from "@vercel/analytics/react";
 import "./App.css";
+=======
+import './App.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { useTranslation } from 'react-i18next';
+
+
+import Navbar from './sections/Navbar.jsx';
+import Hero from './sections/Hero.jsx';
+import ContactsModal from './sections/ContactsModal.jsx';
+import { useWindowWidth } from './hooks/useWindowWidth.js';
+import { useFolderTimer } from './hooks/useFolderTimer.js';
+import { useToggle } from './hooks/useToggle.js';
+import { reloadPage } from './utils/navigation.js';
+import { SpeedInsights } from '@vercel/speed-insights/react';
+import { Analytics } from '@vercel/analytics/react';
+
+>>>>>>> 2f1b78c (feat: analytics and speed insights integration)
 function App() {
   const { t } = useTranslation();
   const [isContactsOpen, toggleContacts] = useToggle(false);
 
   const { getFolderSize } = useWindowWidth();
+<<<<<<< HEAD
   const { folderRef, isFolderOpen, handleProjectsClick, handleFolderInteract } =
     useFolderTimer();
+=======
+  const { folderRef, isFolderOpen, handleProjectsClick, handleFolderInteract } = useFolderTimer();
+>>>>>>> 2f1b78c (feat: analytics and speed insights integration)
 
   const handleHomeClick = (e) => reloadPage(e);
 
   const handleContactsClick = (e) => {
-    e.preventDefault();
-    toggleContacts();
-  };
-
-  return (
-    <div
-      className="App text-white min-h-screen flex flex-col scroll-smooth"
-      style={{ scrollbarGutter: "stable" }}
-    >
-      <div className="flex flex-col laptop:h-screen laptop:max-h-[1080px]">
+    import './App.css';
+    import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+    import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+    import { useTranslation } from 'react-i18next';
+    import Navbar from './sections/Navbar.jsx';
+    import Hero from './sections/Hero.jsx';
+    import ContactsModal from './sections/ContactsModal.jsx';
+    import { useWindowWidth } from './hooks/useWindowWidth.js';
+    import { useFolderTimer } from './hooks/useFolderTimer.js';
+    import { useToggle } from './hooks/useToggle.js';
+    import { reloadPage } from './utils/navigation.js';
+    import { SpeedInsights } from '@vercel/speed-insights/react';
+    import { Analytics } from '@vercel/analytics/react';
         <Navbar
           onHomeClick={handleHomeClick}
           onContactsClick={handleContactsClick}
@@ -54,8 +80,13 @@ function App() {
       <button
         onClick={handleContactsClick}
         className="fixed bottom-5 right-5 laptop:hidden z-40 w-12 h-12 mobile:w-13 mobile:h-13 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 hover:opacity-100 opacity-75 shadow-lg hover:shadow-orange-500/40 flex items-center justify-center text-white text-lg mobile:text-xl transition-all duration-300 hover:scale-110 active:scale-95 border border-orange-400/30"
+<<<<<<< HEAD
         title={t("nav.contacts")}
         aria-label={t("nav.contacts")}
+=======
+        title={t('nav.contacts')}
+        aria-label={t('nav.contacts')}
+>>>>>>> 2f1b78c (feat: analytics and speed insights integration)
       >
         <FontAwesomeIcon icon={faEnvelope} />
       </button>
