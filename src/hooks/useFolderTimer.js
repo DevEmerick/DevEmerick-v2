@@ -43,7 +43,9 @@ export function useFolderTimer() {
   };
 
   const handleFolderInteract = (isOpen) => {
-    // When called with no args (e.g. from paper hover), only cancel auto-close timer
+    // Se chamado sem argumento (undefined), cancela apenas o timer de auto-close.
+    // Isso ocorre ao interagir com os papéis da pasta animada (hover), sem abrir/fechar.
+    // Se chamado com booleano, abre/fecha a pasta e gerencia o timer normalmente.
     if (isOpen === undefined) {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
       return;
