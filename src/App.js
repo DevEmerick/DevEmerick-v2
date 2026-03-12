@@ -11,7 +11,7 @@ import { useToggle } from "./hooks/useToggle.js";
 import { reloadPage } from "./utils/navigation.js";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Analytics } from "@vercel/analytics/react";
-
+import "./App.css";
 function App() {
   const { t } = useTranslation();
   const [isContactsOpen, toggleContacts] = useToggle(false);
