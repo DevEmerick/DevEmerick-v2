@@ -161,6 +161,9 @@ const Folder = forwardRef(({
     if (open) {
       setOpen(false);
       setPaperOffsets(Array.from({ length: maxItems }, () => ({ x: 0, y: 0 })));
+      if (onInteract) {
+        onInteract(false);
+      }
     }
   };
 
