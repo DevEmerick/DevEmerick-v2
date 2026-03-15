@@ -3,7 +3,7 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faHandPointer } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import Folder from '../components/animation/Folder';
+import Folder from '../components/animation/folder.js';
 import MiniLinkCard from '../components/ui/MiniLinkCard.js';
 import MiniProjectCard from '../components/ui/MiniProjectCard.js';
 import { SOCIAL_LINKS } from '../constants/links.js';
@@ -34,7 +34,7 @@ function Hero({ folderRef, isFolderOpen, getFolderSize, onFolderInteract }) {
         className="presentation text-center laptop:text-left order-2 laptop:order-1 relative z-10 laptop:self-end w-[calc(100%+15px)] laptop:mb-[60px]"
       >
         <h1
-          className="text-2xl mobile:text-3xl mobile-lg:text-4xl tablet:text-5xl laptop:text-6xl font-bold leading-tight"
+          className="text-white text-2xl mobile:text-3xl mobile-lg:text-4xl tablet:text-5xl laptop:text-6xl font-bold leading-tight"
           style={{ opacity: isFolderOpen ? 0.4 : 1, transition: 'opacity 0.3s ease' }}
         >
           {t('hero.greeting')} <br />
