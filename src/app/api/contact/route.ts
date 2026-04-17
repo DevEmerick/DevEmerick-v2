@@ -9,15 +9,29 @@ interface ContactPayload {
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export async function POST(request: Request) {
-  const apiKey = process.env.RESEND_API_KEY;
+function getMissingEmailConfig() {
+  const missing: string[] = [];
 
-  if (!apiKey) {
+  if (!process.env.RESEND_API_KEY) missing.push("RESEND_API_KEY");
+  if (!process.env.CONTACT_TO_EMAIL) missing.push("CONTACT_TO_EMAIL");
+  if (!process.env.CONTACT_FROM_EMAIL) missing.push("CONTACT_FROM_EMAIL");
+
+  return missing;
+}
+
+export async function POST(request: Request) {
+  const missingConfig = getMissingEmailConfig();
+
+  if (missingConfig.length > 0) {
     return NextResponse.json(
-      { error: "Email service is not configured yet." },
+      {
+        error: `Email service is not configured yet. Missing: ${missingConfig.join(", ")}.`,
+      },
       { status: 500 }
     );
   }
+
+  const apiKey = process.env.RESEND_API_KEY as string;
 
   let payload: ContactPayload;
 
@@ -44,8 +58,8 @@ export async function POST(request: Request) {
   }
 
   const resend = new Resend(apiKey);
-  const toEmail = process.env.CONTACT_TO_EMAIL || "emerick.perth@gmail.com";
-  const fromEmail = process.env.CONTACT_FROM_EMAIL || "Portfolio Contact <onboarding@resend.dev>";
+  const toEmail = process.env.CONTACT_TO_EMAIL as string;
+  const fromEmail = process.env.CONTACT_FROM_EMAIL as string;
 
   try {
     const { data, error } = await resend.emails.send({
