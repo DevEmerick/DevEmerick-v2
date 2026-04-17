@@ -10,9 +10,10 @@ interface ContactPayload {
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function getMissingEmailConfig() {
+  const apiKey = process.env.RESEND_API_KEY || process.env.RESENT_API_KEY;
   const missing: string[] = [];
 
-  if (!process.env.RESEND_API_KEY) missing.push("RESEND_API_KEY");
+  if (!apiKey) missing.push("RESEND_API_KEY");
   if (!process.env.CONTACT_TO_EMAIL) missing.push("CONTACT_TO_EMAIL");
   if (!process.env.CONTACT_FROM_EMAIL) missing.push("CONTACT_FROM_EMAIL");
 
@@ -31,7 +32,11 @@ export async function POST(request: Request) {
     );
   }
 
-  const apiKey = process.env.RESEND_API_KEY as string;
+  const apiKey = (process.env.RESEND_API_KEY || process.env.RESENT_API_KEY) as string;
+
+  if (!process.env.RESEND_API_KEY && process.env.RESENT_API_KEY) {
+    console.warn("Using RESENT_API_KEY fallback. Rename it to RESEND_API_KEY in your environment settings.");
+  }
 
   let payload: ContactPayload;
 
