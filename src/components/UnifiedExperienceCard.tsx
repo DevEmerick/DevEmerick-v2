@@ -7,9 +7,18 @@ interface UnifiedExperienceCardProps {
   company: string;
   period: string;
   description: string;
+  overviewLabel?: string;
+  tagLabels?: [string, string, string];
 }
 
-export const UnifiedExperienceCard = ({ role, company, period, description }: UnifiedExperienceCardProps) => {
+export const UnifiedExperienceCard = ({
+  role,
+  company,
+  period,
+  description,
+  overviewLabel = 'Overview',
+  tagLabels = ['Performance', 'Scalability', 'Clean Code'],
+}: UnifiedExperienceCardProps) => {
   return (
     <div className="group relative w-full bg-gray-900/40 backdrop-blur-sm border border-gray-800/50 rounded-2xl overflow-hidden hover:border-blue-500/30 transition-all duration-500 shadow-2xl">
       <div className="flex flex-col md:flex-row min-h-[260px]">
@@ -35,12 +44,12 @@ export const UnifiedExperienceCard = ({ role, company, period, description }: Un
           <div className="relative z-10">
             <div className="flex items-center gap-2 mb-3">
                <span className="h-px w-6 bg-blue-500/50"></span>
-               <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-500/70">Overview</span>
+               <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-500/70">{overviewLabel}</span>
             </div>
             <h3 className="text-xl md:text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors duration-500">{role}</h3>
             <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-lg">{description}</p>
             <div className="flex flex-wrap gap-2">
-              {['Performance', 'Scalability', 'Clean Code'].map(tag => (
+              {tagLabels.map(tag => (
                 <span key={tag} className="text-[9px] font-bold uppercase tracking-wider bg-gray-950/50 border border-gray-800 px-2.5 py-1 rounded text-gray-500 group-hover:border-blue-500/20 group-hover:text-blue-400/80 transition-all">{tag}</span>
               ))}
             </div>

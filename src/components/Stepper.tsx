@@ -8,9 +8,12 @@ interface StepperProps {
   children: React.ReactNode;
   initialStep?: number;
   onStepChange?: (step: number) => void;
-  onFinalStepCompleted?: () => void;
+  onFinalStepCompleted?: () => void | Promise<boolean | void>;
   validateStep?: (step: number) => boolean;
   formState?: 'idle' | 'loading' | 'success' | string;
+  isLoading?: boolean;
+  successTitle?: string;
+  successLines?: [string, string, string];
   backButtonText?: string;
   nextButtonText?: string;
 }
@@ -22,6 +25,13 @@ function Stepper({
   onFinalStepCompleted = () => {},
   validateStep = () => true,
   formState = 'idle',
+  isLoading = false,
+  successTitle = 'Transmissão Concluída',
+  successLines = [
+    'Exit code: 0x0000 (SUCCESS)',
+    'Payload delivered to cloud storage.',
+    'Expect a response shortly.',
+  ],
   backButtonText = '$ cd ..',
   nextButtonText = 'next_step',
 }: StepperProps) {
@@ -33,7 +43,9 @@ function Stepper({
   const totalSteps = stepsArray.length;
   const isLastStep = currentStep === totalSteps;
 
-  const handleNext = () => {
+  const handleNext = async () => {
+    if (isLoading) return;
+
     if (validateStep(currentStep)) {
       setFailedSteps(prev => prev.filter(s => s !== currentStep));
       if (!isLastStep) {
@@ -42,7 +54,12 @@ function Stepper({
         setCurrentStep(nextStep);
         onStepChange(nextStep);
       } else {
-        onFinalStepCompleted();
+        const shouldContinue = await onFinalStepCompleted();
+        if (shouldContinue === false) {
+          setShake(true);
+          setTimeout(() => setShake(false), 500);
+          return;
+        }
         setCurrentStep(totalSteps + 1);
       }
     } else {
@@ -62,7 +79,7 @@ function Stepper({
   };
 
   return (
-    <div className="group relative bg-[#09090b]/80 backdrop-blur-2xl border border-white/[0.05] rounded-2xl overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] transition-all duration-500 min-h-[520px] flex flex-col">
+    <div className="group relative bg-[#09090b]/80 backdrop-blur-2xl border border-white/[0.05] rounded-2xl overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] transition-all duration-500 min-h-[520px] flex flex-col" role="group" aria-label="Contact step form">
       <div className="flex items-center justify-between px-6 py-4 border-b border-white/[0.05] bg-white/[0.01]">
         <div className="flex items-center gap-4">
           <div className="flex gap-1.5 text-white/10">
@@ -77,10 +94,12 @@ function Stepper({
           </div>
         </div>
 
-        <div className="flex gap-1.5">
+        <div className="flex gap-1.5" role="list" aria-label="Form progress">
           {stepsArray.map((_, index) => (
             <div
               key={index}
+              role="listitem"
+              aria-current={currentStep === index + 1 ? 'step' : undefined}
               className={`h-1 transition-all duration-500 ${
                 currentStep === index + 1
                   ? 'w-8 bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.3)]'
@@ -102,11 +121,11 @@ function Stepper({
           <CheckCircle size={80} className="text-blue-500 mx-auto relative z-10" />
           <div className="absolute inset-0 bg-blue-500/10 blur-3xl rounded-full scale-150 animate-pulse"></div>
         </motion.div>
-        <h3 className="text-3xl font-bold text-white mb-3 text-center tracking-tight">Transmissão Concluída</h3>
+        <h3 className="text-3xl font-bold text-white mb-3 text-center tracking-tight">{successTitle}</h3>
         <p className="text-gray-500 text-center text-sm font-mono tracking-tight leading-relaxed">
-          Exit code: 0x0000 (SUCCESS)<br />
-          Payload delivered to cloud storage.<br />
-          Expect a response shortly.
+          {successLines[0]}<br />
+          {successLines[1]}<br />
+          {successLines[2]}
         </p>
       </div>
 
@@ -133,6 +152,7 @@ function Stepper({
           <div className="flex justify-between items-center pt-8 border-t border-white/[0.03]">
             <button
               onClick={handleBack}
+              disabled={isLoading}
               className={`text-[10px] font-mono tracking-widest transition-colors ${
                 currentStep === 1 ? 'opacity-0 pointer-events-none' : 'text-gray-600 hover:text-gray-400'
               }`}
@@ -142,13 +162,15 @@ function Stepper({
             <motion.button
               animate={shake ? { x: [-10, 10, -10, 10, 0] } : {}}
               onClick={handleNext}
+              disabled={isLoading}
+              aria-busy={isLoading}
               className={`flex items-center gap-3 px-8 py-2.5 rounded-lg text-[10px] font-mono uppercase tracking-[0.2em] transition-all ${
                 failedSteps.includes(currentStep)
                   ? 'bg-red-500/10 text-red-400 border border-red-500/20 shadow-[0_0_20px_rgba(239,68,68,0.1)]'
                   : 'bg-white text-black hover:bg-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.5)] active:scale-95'
               }`}
             >
-              {isLastStep ? './execute_send' : `./${nextButtonText}`}
+              {isLoading ? './sending' : isLastStep ? './execute_send' : `./${nextButtonText}`}
               <ChevronRight size={14} />
             </motion.button>
           </div>

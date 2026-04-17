@@ -9,9 +9,10 @@ interface ProjectCardProps {
   tags: string[];
   icon: React.ComponentType<{ size?: number; strokeWidth?: number; className?: string }>;
   slug: string;
+  openLabel?: string;
 }
 
-export const ProjectCard = ({ title, description, tags, icon: Icon, slug }: ProjectCardProps) => {
+export const ProjectCard = ({ title, description, tags, icon: Icon, slug, openLabel = 'Open' }: ProjectCardProps) => {
   return (
     <div className="group relative h-full bg-gray-900/10 backdrop-blur-xl border border-white/[0.05] rounded-xl overflow-hidden transition-all duration-500 hover:border-blue-500/30 shadow-2xl flex flex-col">
       <div className="bg-white/[0.01] px-5 py-3 border-b border-white/[0.05] flex items-center justify-between">
@@ -56,7 +57,7 @@ export const ProjectCard = ({ title, description, tags, icon: Icon, slug }: Proj
           </div>
 
           <button className="group/btn bg-white text-black px-5 py-2 rounded-full text-[9px] font-bold uppercase tracking-[0.2em] hover:bg-gray-200 transition-all shadow-lg flex items-center gap-2 font-mono whitespace-nowrap active:scale-95">
-            <span>&gt; Open</span>
+            <span>&gt; {openLabel}</span>
           </button>
         </div>
       </div>
