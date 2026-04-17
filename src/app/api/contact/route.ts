@@ -48,7 +48,7 @@ export async function POST(request: Request) {
   const fromEmail = process.env.CONTACT_FROM_EMAIL || "Portfolio Contact <onboarding@resend.dev>";
 
   try {
-    await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: fromEmail,
       to: [toEmail],
       replyTo: email,
@@ -63,7 +63,20 @@ export async function POST(request: Request) {
       `,
     });
 
-    return NextResponse.json({ ok: true });
+    if (error) {
+      console.error("Resend send error:", error);
+      return NextResponse.json(
+        {
+          error:
+            typeof error === "object" && error !== null && "message" in error
+              ? String((error as { message?: unknown }).message)
+              : "Failed to send email. Please try again later.",
+        },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({ ok: true, id: data?.id ?? null });
   } catch {
     return NextResponse.json(
       { error: "Failed to send email. Please try again later." },
