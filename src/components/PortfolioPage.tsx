@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X, Download, ArrowUp } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 import Stepper, { Step } from "@/components/Stepper";
@@ -33,7 +34,7 @@ type Dictionary = {
     title: string;
     subtitle: string;
     openLabel: string;
-    items: Array<{ title: string; description: string; tags: string[]; icon: React.ComponentType<{ size?: number; strokeWidth?: number; className?: string }>; slug: string }>;
+    items: Array<{ title: string; description: string; tags: string[]; icon: React.ComponentType<{ size?: number; strokeWidth?: number; className?: string }>; slug: string; url?: string }>;
   };
   contact: {
     kicker: string;
@@ -90,43 +91,54 @@ const translations: Record<Locale, Dictionary> = {
       tagLabels: ["Performance", "Escalabilidade", "Código Limpo"],
       items: [
         {
-          role: "Desenvolvedor Full Stack",
-          company: "Projetos de Especialização",
-          period: "Foco Atual",
-          description: "Dedicando tempo ao aprofundamento prático no ecossistema moderno de JavaScript (React, Next.js, Node.js) e arquitetura de software.",
+          role: "FREELANCER",
+          company: "Freelancer",
+          period: "2022 - Presente",
+          description: "Atuo como freelancer na área de desenvolvimento de software, criando e aprimorando aplicações web de acordo com as necessidades de cada projeto. Tenho formação em Análise e Desenvolvimento de Sistemas e conhecimentos em **JavaScript, TypeScript, React, Next.js, Node.js, APIs REST, HTML, CSS, Tailwind CSS, PostgreSQL, MySQL, Prisma, Git, GitHub, Docker e Vercel**. Desenvolvo projetos full stack, interfaces responsivas, integrações com APIs e soluções personalizadas, buscando sempre aplicar boas práticas de desenvolvimento, organização de código, segurança e experiência do usuário.",
         },
         {
-          role: "Desenvolvedor Front-end Pleno",
-          company: "Agência Digital Creative",
-          period: "2020 - 2022",
-          description: "Criação de interfaces complexas com React e Redux. Implementação de design systems.",
+          role: "UX DEVELOPER",
+          company: "Digital Group",
+          period: "2020-2021",
+          description: "Manutenção, modelagem e criação dos principais canais de serviços digitais da Caixa Seguradora, comfoco na experiência do usuário e na eficiência operacional. Desenvolvimento de jornadas conversacionais e automação de fluxos de atendimento no WhatsApp, Instagram e Facebook, utilizando JavaScript para melhorar a inteligência e a personalização das interações.Integração com sistemas internos, garantindo escalabilidade e redução de esforço no atendimento aocliente.",
         },
         {
-          role: "Desenvolvedor Web Júnior",
-          company: "StartUp Inova",
-          period: "2018 - 2020",
-          description: "Desenvolvimento e manutenção de websites institucionais e sistemas internos utilizando HTML, CSS, JS e Node.js.",
+          role: "ESTÁGIO",
+          company: "CNJ",
+          period: "2019 - 2020",
+          description: "Identificação, análise e correção de erros que impactavam diretamente a experiência dos usuários, contribuindo para a melhoria contínua da interface e da usabilidade do sistema. Atendimento a usuários internos e externos, incluindo advogados, magistrados e equipes técnicas, garantindo suporte eficiente e comunicação clara das necessidades. Criação da Ficha de Atendimento ao Cliente (SAC) para padronização e otimização do fluxo de suporte aos usuários. Desenvolvimento de relatórios personalizados a partir do banco de dados para apoiar decisões estratégicas e acompanhar as demandas do sistema. Colaboração com equipes de desenvolvimento no direcionamento de correções, melhorias e novos requisitos.",
         },
+        
       ],
     },
     projects: {
       title: "Projetos em Destaque",
-      subtitle: "Sistemas construídos com precisão e as melhores práticas da indústria.",
+      subtitle: "Projetos Pessoais contruidos ao longo da minha jornada de aprendizado e desenvolvimento, aplicando boas práticas de desenvolvimento e arquitetura de software.",
       openLabel: "Abrir",
       items: [
         {
-          title: "E-commerce Platform",
-          description: "Plataforma robusta com Next.js, Stripe e PostgreSQL. Focada em performance e escalabilidade de vendas.",
-          tags: ["Next.js", "Stripe", "PostgreSQL"],
+          title: "MINIGAME",
+          description: "Jogo de fugir com o mouse baseado em um jogo de infancia que ficava no clickjogos, inspirado pela nostalgia e diversao que era jogar naquela epoca.",
+          tags: ["HTML", "CSS", "JavaScript", "Vercel"],
           icon: Layout,
-          slug: "storefront-v2",
+          slug: "mouse-ashy.vercel",
+          url: "https://mouse-ashy.vercel.app/",
         },
         {
-          title: "Real-time Analytics",
-          description: "Dashboard de análise de dados em tempo real utilizando WebSockets e arquitetura Node.js orientada a eventos.",
-          tags: ["Node.js", "WebSockets", "Redis"],
+          title: "SPIDER-PROJECT",
+          description: "Landing Page construida para um projeto de estudo de um filme do homem aranha, com o objetivo de praticar animações e interações com CSS e JavaScript.",
+          tags: ["HTML", "SCSS", "JavaScript", "Vercel"],
           icon: Database,
-          slug: "analytics-engine",
+          slug: "spider-man-lake.vercel",
+          url: "https://spider-man-lake.vercel.app/",
+        },
+        {
+          title: "NEXUS SAAS",
+          description: "Uma plataforma moderna e completa de gerenciamento de tarefas e produtividade, no estilo trello, construída com React e potencializada por IA. O Nexus SaaS é uma demonstração de SaaS que apresenta padrões avançados de UI/UX, organização de tarefas em tempo real e recursos inteligentes de gerenciamento de fluxos de trabalho.",
+          tags: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
+          icon: Layout,
+          slug: "nexus-saa-s-olive.vercel",
+          url: "https://nexus-saa-s-olive.vercel.app/",
         },
       ],
     },
@@ -228,6 +240,14 @@ const translations: Record<Locale, Dictionary> = {
           tags: ["Node.js", "WebSockets", "Redis"],
           icon: Database,
           slug: "analytics-engine",
+        },
+        {
+          title: "Nexus SaaS",
+          description: "SaaS platform created to practice building modern interfaces and scalable digital experiences.",
+          tags: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
+          icon: Layout,
+          slug: "nexus-saa-s-olive.vercel",
+          url: "https://nexus-saa-s-olive.vercel.app/",
         },
       ],
     },
@@ -609,9 +629,14 @@ export default function PortfolioPage({ locale }: PortfolioPageProps) {
             <FadeIn>
               <div className="flex flex-col md:flex-row items-center gap-12">
                 <div className="w-full md:w-1/3 flex justify-center">
-                  <div className="relative w-64 h-64 rounded-2xl overflow-hidden border-2 border-gray-800 group">
-                    <div className="absolute inset-0 bg-blue-500/20 group-hover:bg-transparent z-10 transition-colors"></div>
-                    <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Guilherme&backgroundColor=1e293b" alt="Guilherme Emerick" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 relative z-0" />
+                  <div className="relative w-full max-w-80 aspect-[3/4] rounded-2xl overflow-hidden border-2 border-gray-800">
+                    <Image
+                      src="/myself.jpeg"
+                      alt="Guilherme Emerick"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 320px"
+                      className="object-cover"
+                    />
                   </div>
                 </div>
                 <div className="w-full md:w-2/3">

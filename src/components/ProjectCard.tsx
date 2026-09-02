@@ -9,10 +9,11 @@ interface ProjectCardProps {
   tags: string[];
   icon: React.ComponentType<{ size?: number; strokeWidth?: number; className?: string }>;
   slug: string;
+  url?: string;
   openLabel?: string;
 }
 
-export const ProjectCard = ({ title, description, tags, icon: Icon, slug, openLabel = 'Open' }: ProjectCardProps) => {
+export const ProjectCard = ({ title, description, tags, icon: Icon, slug, url, openLabel = 'Open' }: ProjectCardProps) => {
   return (
     <div className="group relative h-full bg-gray-900/10 backdrop-blur-xl border border-white/[0.05] rounded-xl overflow-hidden transition-all duration-500 hover:border-blue-500/30 shadow-2xl flex flex-col">
       <div className="bg-white/[0.01] px-5 py-3 border-b border-white/[0.05] flex items-center justify-between">
@@ -49,16 +50,21 @@ export const ProjectCard = ({ title, description, tags, icon: Icon, slug, openLa
 
         <div className="mt-auto pt-6 border-t border-white/[0.03] flex items-center justify-between gap-4">
           <div className="flex flex-wrap gap-1.5">
-            {tags.slice(0, 2).map(tag => (
+            {tags.map(tag => (
               <span key={tag} className="text-[9px] font-mono px-2 py-0.5 text-gray-600 border border-white/[0.03] rounded uppercase tracking-tighter group-hover:text-gray-500 transition-colors">
                 {tag}
               </span>
             ))}
           </div>
 
-          <button className="group/btn bg-white text-black px-5 py-2 rounded-full text-[9px] font-bold uppercase tracking-[0.2em] hover:bg-gray-200 transition-all shadow-lg flex items-center gap-2 font-mono whitespace-nowrap active:scale-95">
+          <a
+            href={url}
+            target={url ? "_blank" : undefined}
+            rel={url ? "noreferrer" : undefined}
+            className="group/btn bg-white text-black px-5 py-2 rounded-full text-[9px] font-bold uppercase tracking-[0.2em] hover:bg-gray-200 transition-all shadow-lg flex items-center gap-2 font-mono whitespace-nowrap active:scale-95"
+          >
             <span>&gt; {openLabel}</span>
-          </button>
+          </a>
         </div>
       </div>
     </div>
