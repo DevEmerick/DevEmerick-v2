@@ -12,7 +12,8 @@
 - [ ] Run the full recipe against a live database and prove concurrent instances: blocked because there is no database-backed factory.
 - [x] Run `sdk check` on `recipe.json`.
 - [x] Smoke-test signed `discover` (`200`) and invalid signatures (`401`).
-- [ ] Push this branch and open a pull request: pending after validation.
+- [x] Push this branch: `origin/autonoma-integration` at commit `5c9273b`.
+- [ ] Open a pull request: `gh` is unavailable; create it at https://github.com/DevEmerick/DevEmerick-v2/pull/new/autonoma-integration.
 
 The planner scenario describes static translations, experience entries, and projects. Those are source-code dictionaries, not runtime entities, so they cannot be seeded or queried through an Environment Factory without changing the application's architecture.
 
