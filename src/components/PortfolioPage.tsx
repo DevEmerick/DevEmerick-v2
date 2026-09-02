@@ -815,5 +815,6 @@ export default function PortfolioPage({ locale }: PortfolioPageProps) {
         <ArrowUp size={24} />
       </button>
     </div>
+    
   );
 }
