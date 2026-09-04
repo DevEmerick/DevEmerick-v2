@@ -19,11 +19,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "Guilherme Emerick | Portfolio",
+    default: "Guilherme Emerick | Portfólio",
     template: "%s | Guilherme Emerick",
   },
   description:
-    "Portfolio de Guilherme Emerick com projetos, experiência profissional e contato para oportunidades de desenvolvimento web.",
+    "Portfólio de Guilherme Emerick com projetos, experiência profissional e contato para oportunidades de desenvolvimento web.",
   keywords: [
     "Guilherme Emerick",
     "portfolio",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "DevEmerick",
-    title: "Guilherme Emerick | Portfolio",
+    title: "Guilherme Emerick | Portfólio",
     description:
       "Projetos, experiência e contato para oportunidades de desenvolvimento web.",
     locale: "pt_BR",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Guilherme Emerick | Portfolio",
+    title: "Guilherme Emerick | Portfólio",
     description:
       "Projetos, experiência e contato para oportunidades de desenvolvimento web.",
   },

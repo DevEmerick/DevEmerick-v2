@@ -79,10 +79,10 @@ const translations: Record<Locale, Dictionary> = {
     },
     about: {
       title: "Sobre Mim",
-      p1: "Olá! Sou o Guilherme, um desenvolvedor focado em resolver problemas reais através de código limpo e sistemas bem estruturados. Com sólida experiência no ecossistema JavaScript, transformo conceitos complexos em aplicações web completas e funcionais.",
-      p2: "Como Full Stack, domino a criação de interfaces modernas e performáticas com React e Next.js, garantindo a melhor experiência de usuário. No back-end, foco em construir APIs robustas e escaláveis utilizando Node.js, sempre priorizando a segurança e a eficiência do sistema.",
+      p1: "Olá! Sou o Guilherme, um desenvolvedor focado em resolver problemas reais por meio de código limpo e sistemas bem estruturados. Com sólida experiência no ecossistema JavaScript, transformo conceitos complexos em aplicações web completas e funcionais.",
+      p2: "Como desenvolvedor Full Stack, domino a criação de interfaces modernas e performáticas com React e Next.js, garantindo a melhor experiência do usuário. No back-end, foco em construir APIs robustas e escaláveis utilizando Node.js, sempre priorizando a segurança e a eficiência do sistema.",
       resumeButton: "Baixar Currículo",
-      statsYears: "Anos de Exp",
+      statsYears: "Anos de experiência",
       statsProjects: "Projetos",
     },
     experience: {
@@ -100,7 +100,7 @@ const translations: Record<Locale, Dictionary> = {
           role: "UX DEVELOPER",
           company: "Digital Group",
           period: "2020-2021",
-          description: "Manutenção, modelagem e criação dos principais canais de serviços digitais da Caixa Seguradora, comfoco na experiência do usuário e na eficiência operacional. Desenvolvimento de jornadas conversacionais e automação de fluxos de atendimento no WhatsApp, Instagram e Facebook, utilizando JavaScript para melhorar a inteligência e a personalização das interações.Integração com sistemas internos, garantindo escalabilidade e redução de esforço no atendimento aocliente.",
+          description: "Manutenção, modelagem e criação dos principais canais de serviços digitais da Caixa Seguradora, com foco na experiência do usuário e na eficiência operacional. Desenvolvimento de jornadas conversacionais e automação de fluxos de atendimento no WhatsApp, Instagram e Facebook, utilizando JavaScript para melhorar a inteligência e a personalização das interações. Integração com sistemas internos, garantindo escalabilidade e redução de esforço no atendimento ao cliente.",
         },
         {
           role: "ESTÁGIO",
@@ -113,12 +113,12 @@ const translations: Record<Locale, Dictionary> = {
     },
     projects: {
       title: "Projetos em Destaque",
-      subtitle: "Projetos Pessoais contruidos ao longo da minha jornada de aprendizado e desenvolvimento, aplicando boas práticas de desenvolvimento e arquitetura de software.",
+      subtitle: "Projetos pessoais construídos ao longo da minha jornada de aprendizado e desenvolvimento, aplicando boas práticas de desenvolvimento e arquitetura de software.",
       openLabel: "Abrir",
       items: [
         {
           title: "MINIGAME",
-          description: "Jogo de fugir com o mouse baseado em um jogo de infancia que ficava no clickjogos, inspirado pela nostalgia e diversao que era jogar naquela epoca.",
+          description: "Jogo de fuga com o mouse, baseado em um jogo de infância que ficava no Click Jogos, inspirado pela nostalgia e diversão de jogar naquela época.",
           tags: ["HTML", "CSS", "JavaScript", "Vercel"],
           icon: Layout,
           slug: "mouse-ashy.vercel",
@@ -126,7 +126,7 @@ const translations: Record<Locale, Dictionary> = {
         },
         {
           title: "SPIDER-PROJECT",
-          description: "Landing Page construida para um projeto de estudo de um filme do homem aranha, com o objetivo de praticar animações e interações com CSS e JavaScript.",
+          description: "Landing page construída para um projeto de estudo sobre um filme do Homem-Aranha, com o objetivo de praticar animações e interações com CSS e JavaScript.",
           tags: ["HTML", "SCSS", "JavaScript", "Vercel"],
           icon: Database,
           slug: "spider-man-lake.vercel",
@@ -134,7 +134,7 @@ const translations: Record<Locale, Dictionary> = {
         },
         {
           title: "NEXUS SAAS",
-          description: "Uma plataforma moderna e completa de gerenciamento de tarefas e produtividade, no estilo trello, construída com React e potencializada por IA. O Nexus SaaS é uma demonstração de SaaS que apresenta padrões avançados de UI/UX, organização de tarefas em tempo real e recursos inteligentes de gerenciamento de fluxos de trabalho.",
+          description: "Uma plataforma moderna e completa de gerenciamento de tarefas e produtividade, no estilo Trello, construída com React e potencializada por IA. O Nexus SaaS é uma demonstração de SaaS que apresenta padrões avançados de UI/UX, organização de tarefas em tempo real e recursos inteligentes de gerenciamento de fluxos de trabalho.",
           tags: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
           icon: Layout,
           slug: "nexus-saa-s-olive.vercel",
@@ -145,7 +145,7 @@ const translations: Record<Locale, Dictionary> = {
     contact: {
       kicker: "Communication",
       title: "Iniciar Transmissão",
-      namePrompt: "Como podemos chamar-lo?",
+      namePrompt: "Como podemos chamar você?",
       emailPrompt: "Qual o seu melhor e-mail?",
       messagePrompt: "Como posso ajudar?",
       namePlaceholder: "Nome completo...",
