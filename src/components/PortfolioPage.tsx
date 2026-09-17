@@ -79,8 +79,8 @@ const translations: Record<Locale, Dictionary> = {
     },
     about: {
       title: "Sobre Mim",
-      p1: "Olá! Sou o Guilherme, um desenvolvedor focado em resolver problemas reais por meio de código limpo e sistemas bem estruturados. Com sólida experiência no ecossistema JavaScript, transformo conceitos complexos em aplicações web completas e funcionais.",
-      p2: "Como desenvolvedor Full Stack, domino a criação de interfaces modernas e performáticas com React e Next.js, garantindo a melhor experiência do usuário. No back-end, foco em construir APIs robustas e escaláveis utilizando Node.js, sempre priorizando a segurança e a eficiência do sistema.",
+      p1: "Olá! Sou o Guilherme, um profissional de TI com sólida experiência em suporte técnico, atendimento ao cliente e desenvolvimento de soluções digitais. Ao longo da carreira, combinei a capacidade de diagnosticar e resolver problemas reais com a criação de sistemas e interfaces que melhoram a experiência do usuário e a eficiência operacional.",
+      p2: "Como desenvolvedor Full Stack, trabalho com React, Next.js, Node.js e arquitetura de software para entregar aplicações modernas, performáticas e bem estruturadas. Como suporte técnico, meu foco está na comunicação clara, no troubleshooting eficiente e na resolução de incidentes com empatia e precisão, conectando necessidades técnicas com soluções práticas para pessoas e negócios. Essa combinação me permite transformar desafios complexos em experiências seguras, funcionais e de alto impacto.",
       resumeButton: "Baixar Currículo",
       statsYears: "Anos de experiência",
       statsProjects: "Projetos",
@@ -100,13 +100,13 @@ const translations: Record<Locale, Dictionary> = {
           role: "UX DEVELOPER",
           company: "Digital Group",
           period: "2020-2021",
-          description: "Manutenção, modelagem e criação dos principais canais de serviços digitais da Caixa Seguradora, com foco na experiência do usuário e na eficiência operacional. Desenvolvimento de jornadas conversacionais e automação de fluxos de atendimento no WhatsApp, Instagram e Facebook, utilizando JavaScript para melhorar a inteligência e a personalização das interações. Integração com sistemas internos, garantindo escalabilidade e redução de esforço no atendimento ao cliente.",
+          description: "Manutenção, modelagem e criação dos principais canais de serviços digitais da Caixa Seguradora, com foco na experiência do usuário e na eficiência operacional. Desenvolvimento de jornadas conversacionais e automação de fluxos de atendimento no WhatsApp, Instagram e Facebook, utilizando JavaScript para melhorar a inteligência e a personalização das interações. Além disso, atuei com suporte técnico de sistemas em produção, diagnóstico de incidentes, troubleshooting e integração com sistemas internos para garantir disponibilidade, reduzir o tempo de resposta e melhorar o atendimento ao cliente. Também documentei soluções, colaborei com equipes internas e apliquei melhorias contínuas nos processos digitais.",
         },
         {
           role: "ESTÁGIO",
           company: "CNJ",
           period: "2019 - 2020",
-          description: "Identificação, análise e correção de erros que impactavam diretamente a experiência dos usuários, contribuindo para a melhoria contínua da interface e da usabilidade do sistema. Atendimento a usuários internos e externos, incluindo advogados, magistrados e equipes técnicas, garantindo suporte eficiente e comunicação clara das necessidades. Criação da Ficha de Atendimento ao Cliente (SAC) para padronização e otimização do fluxo de suporte aos usuários. Desenvolvimento de relatórios personalizados a partir do banco de dados para apoiar decisões estratégicas e acompanhar as demandas do sistema. Colaboração com equipes de desenvolvimento no direcionamento de correções, melhorias e novos requisitos.",
+          description: "Identificação, análise e correção de erros que impactavam diretamente a experiência dos usuários, contribuindo para a melhoria contínua da interface e da usabilidade do sistema. Atendimento a usuários internos e externos, incluindo advogados, magistrados e equipes técnicas, garantindo suporte eficiente e comunicação clara das necessidades. Criação da Ficha de Atendimento ao Cliente (SAC) para padronização e otimização do fluxo de suporte aos usuários. Também realizei suporte remoto, configuração de acessos, auxílio no uso de plataformas e sistemas operacionais, além de desenvolvimento de relatórios personalizados a partir do banco de dados para apoiar decisões estratégicas e acompanhar as demandas do sistema. Colaboração com equipes de desenvolvimento no direcionamento de correções, melhorias e novos requisitos.",
         },
         
       ],
